@@ -1,13 +1,13 @@
+#include <string>
 
-class Router : public Device {
-  private:
+class Router {
   public:
-  	Router(string name, int number_of_interfaces) : name_(name), number_of_interfaces_(number_of_interfaces);
-  	void set_ip(int port, string ip);
-
-  	string name_;
+  	Router(std::string name, int number_of_interfaces);
+  	void set_ip(int port, std::string ip);
+  private:
+  	std::string name_;
   	int number_of_interfaces_;
-  	std::vector<string> ips;
+  	std::vector<std::string> ips;
 
-  	std::vector<Link> links;
+  	// std::vector<Link> links;
 };
