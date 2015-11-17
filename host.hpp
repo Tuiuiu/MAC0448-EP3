@@ -1,17 +1,17 @@
 #include <string>
 
-class Host : public Device {
+class Host {
   private:
   public:
-  	Host(string name) : name_(name);
-  	void set_ip(string ip);
-  	void set_gateway_ip(string ip);
-  	void set_dns_server_ip(string ip);
+  	Host(std::string name) : name_(name) {}
+  	void set_ip(std::string ip);
+  	void set_gateway_ip(std::string ip);
+  	void set_dns_server_ip(std::string ip);
 
-  	string name_;
-  	string ip_;
-  	string gateway_ip_;
-  	string dns_server_ip_;
+  	std::string name_;
+  	std::string ip_;
+  	std::string gateway_ip_;
+  	std::string dns_server_ip_;
 
   	//std::vector<Link> links;
 };
