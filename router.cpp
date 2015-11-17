@@ -1,4 +1,5 @@
-#include <algorithm>
+#include <utility>
+#include "router.hpp"
 
 Router::Router(std::string name, int number_of_interfaces) {
 	name_ = name;
