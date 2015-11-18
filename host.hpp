@@ -2,10 +2,10 @@
 
 class Host {
   public:
-  	Host(std::string name) : name_(name) {}
-  	void set_ip(std::string ip);
-  	void set_gateway_ip(std::string ip);
-  	void set_dns_server_ip(std::string ip);
+  	Host(const std::string &name);
+  	void set_ip(const std::string &ip);
+  	void set_gateway_ip(const std::string &ip);
+  	void set_dns_server_ip(const std::string &ip);
   
   private:
   	std::string name_;

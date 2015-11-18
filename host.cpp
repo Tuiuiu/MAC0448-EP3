@@ -1,13 +1,17 @@
 #include "host.hpp"
 
-void Host::set_ip(std::string ip) {
+Host::Host(const std::string &name) : name_(name) {
+}
+
+
+void Host::set_ip(const std::string &ip) {
 	ip_ = ip;
 }
 
-void Host::set_gateway_ip(std::string ip) {
+void Host::set_gateway_ip(const std::string &ip) {
 	gateway_ip_ = ip;
 }
 
-void Host::set_dns_server_ip(std::string ip) {
+void Host::set_dns_server_ip(const std::string &ip) {
 	dns_server_ip_ = ip;
 }
