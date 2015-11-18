@@ -1,0 +1,8 @@
+set host h0
+set host h1
+set host h2
+set host h3
+
+
+set router r0 3
+set router r1 3
