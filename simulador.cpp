@@ -40,11 +40,19 @@ int main (int argc, char **argv) {
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)(\\s+(\\d+)\\s+([\\d\\.]+))+$")))
         {
-        	/*std::cout << "IP de roteador: " << result[1] << " | " << result[2] << " | " << result[3] << " | " << result[4] << " | " << result[5] << " | " << result[6] << std::endl;
-        	std::cout << "IP de roteador: " << result[1] << " | ";
-        	for (unsigned int i = 3; i < result.size(); i += 3)
-        		std::cout << result[i] << " " << result[i + 1] << " | ";
-        	std::cout << std::endl;*/
+        	std::regex_search(str, result, std::regex("^set ip (\\w+)(.+)$"));
+        	std::string router_name = result[1];
+        	std::string rest_of_string = result[2];
+        	printf("router_name = %s\n", router_name.c_str());
+
+        	while (!rest_of_string.empty())
+        	{
+        		std::regex_search(rest_of_string, result, std::regex("^\\s+(\\d+)\\s+([\\d\\.]+)(.*)$"));
+        		int port = stoi(result[1]);
+        		std::string ip = result[2];
+        		rest_of_string = result[3];
+        		printf("port = %d, ip = %s\n", port, ip.c_str());
+        	}
         }
         else if (!str.empty())
         	std::cout << "Linha não compreendida: " << str << std::endl;
