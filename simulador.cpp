@@ -40,6 +40,8 @@ int main (int argc, char **argv) {
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)(\\s+(\\d+)\\s+([\\d\\.]+))+$")))
         {
+        	printf("IP de roteador\n");
+
         	std::regex_search(str, result, std::regex("^set ip (\\w+)(.+)$"));
         	std::string router_name = result[1];
         	std::string rest_of_string = result[2];
@@ -53,6 +55,59 @@ int main (int argc, char **argv) {
         		rest_of_string = result[3];
         		printf("port = %d, ip = %s\n", port, ip.c_str());
         	}
+        }
+        else if (std::regex_search(str, result, std::regex("^set route (\\w+)(\\s+([\\d\\.]+)\\s+([\\d\\.]+))+$")))
+        {
+        	printf("Rota\n");
+
+        	std::regex_search(str, result, std::regex("^set route (\\w+)(.+)$"));
+        	std::string router_name = result[1];
+        	std::string rest_of_string = result[2];
+        	printf("router_name = %s\n", router_name.c_str());
+
+        	while (!rest_of_string.empty())
+        	{
+        		std::regex_search(rest_of_string, result, std::regex("^\\s+([\\d\\.]+)\\s+([\\d\\.]+)(.*)$"));
+        		std::string source = result[1];
+        		std::string destination = result[2];
+        		rest_of_string = result[3];
+        		printf("source = %s, destination = %s\n", source.c_str(), destination.c_str());
+        	}
+        }
+        else if (std::regex_search(str, result, std::regex("^set performance (\\w+)\\s+(\\d+)us\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)$")))
+        {
+        	std::cout << "Performance: ";
+        	for (unsigned int i = 1; i < result.size(); i++)
+        		std::cout << result[i] << " | ";
+        	std::cout << std::endl;
+        }
+        else if (std::regex_search(str, result, std::regex("^set ([a-z]+) (\\w+) (\\w+)$")))
+        {
+        	std::cout << "Agente da camada de aplicação: ";
+        	for (unsigned int i = 1; i < result.size(); i++)
+        		std::cout << result[i] << " | ";
+        	std::cout << std::endl;
+        }
+        else if (std::regex_search(str, result, std::regex("^set sniffer ([\\w\\.]+)\\s+([\\w\\.]+)\\s+\"(.*)\"$")))
+        {
+        	std::cout << "Sniffer: ";
+        	for (unsigned int i = 1; i < result.size(); i++)
+        		std::cout << result[i] << " | ";
+        	std::cout << std::endl;
+        }
+        else if (std::regex_search(str, result, std::regex("^simulate ([\\d\\.]+)\\s+(\\w+)\\s+\"(.*)\"$")))
+        {
+        	std::cout << "Simulate: ";
+        	for (unsigned int i = 1; i < result.size(); i++)
+        		std::cout << result[i] << " | ";
+        	std::cout << std::endl;
+        }
+        else if (std::regex_search(str, result, std::regex("^finish ([\\d\\.]+)$")))
+        {
+        	std::cout << "Finish: ";
+        	for (unsigned int i = 1; i < result.size(); i++)
+        		std::cout << result[i] << " | ";
+        	std::cout << std::endl;
         }
         else if (!str.empty())
         	std::cout << "Linha não compreendida: " << str << std::endl;
