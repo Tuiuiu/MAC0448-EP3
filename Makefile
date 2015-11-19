@@ -3,7 +3,7 @@ CC = g++
 
 simulador: simulador.o host.o router.o
 
-simulador.o: host.hpp router.hpp
+simulador.o: host.hpp router.hpp link.hpp
 
 host.o: host.hpp
 
