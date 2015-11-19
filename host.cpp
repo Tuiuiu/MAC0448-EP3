@@ -17,7 +17,8 @@ void Host::set_dns_server_ip(const std::string &ip) {
 	dns_server_ip_ = ip;
 }
 
-void Host::set_service_type(const std::string &type) {
+void Host::set_service_data(const std::string &type, const std::string &name) {
+	service_name_ = name;
 	if (type == "ircc")
 		service_type_ = IRCC;
 	else if (type == "ircs")
@@ -26,4 +27,6 @@ void Host::set_service_type(const std::string &type) {
 		service_type_ = DNSS;
 	else
 		std::cout << "Tipo de serviço não existente!" << std::endl;
+
+
 }

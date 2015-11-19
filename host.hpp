@@ -11,7 +11,7 @@ class Host {
   	void set_ip(const std::string &ip);
   	void set_gateway_ip(const std::string &ip);
   	void set_dns_server_ip(const std::string &ip);
-  	void set_service_type(const std::string &type);
+  	void set_service_data(const std::string &type, const std::string &name);
   
   private:
   	std::string name_;
@@ -19,6 +19,7 @@ class Host {
   	std::string gateway_ip_;
   	std::string dns_server_ip_;
   	Service service_type_;
+  	std::string service_name_;
 
   	int virtual_time_;
 
