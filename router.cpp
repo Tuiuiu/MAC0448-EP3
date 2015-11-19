@@ -26,3 +26,8 @@ void Interface::set_ip(const std::string &ip) {
 void Interface::set_capacity(int capacity) {
 	interface_capacity_ = capacity;
 }
+
+std::string Router::get_name() {
+	return name_;
+}
+

@@ -21,6 +21,7 @@ class Router {
   	void set_interface_ip(int port, const std::string &ip);
   	void set_interface_capacity(int port, int capacity);
   	void set_processment_speed(int processment_speed);
+  	std::string get_name();
 
   private:
   	std::string name_;

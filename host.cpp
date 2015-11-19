@@ -27,6 +27,9 @@ void Host::set_service_data(const std::string &type, const std::string &name) {
 		service_type_ = DNSS;
 	else
 		std::cout << "Tipo de serviço não existente!" << std::endl;
-
-
 }
+
+std::string Host::get_name() {
+	return name_;
+}
+

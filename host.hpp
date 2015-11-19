@@ -12,6 +12,7 @@ class Host {
   	void set_gateway_ip(const std::string &ip);
   	void set_dns_server_ip(const std::string &ip);
   	void set_service_data(const std::string &type, const std::string &name);
+  	std::string get_name();
   
   private:
   	std::string name_;
