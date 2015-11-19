@@ -3,6 +3,7 @@
 #include <iostream>
 #include <regex>
 #include <vector>
+#include <unordered_map>
 
 #include "host.hpp"
 #include "router.hpp"
@@ -11,9 +12,11 @@
 int main (int argc, char **argv) {
 	std::ifstream file("entrada.txt");
     std::string str;
-    std::vector<Host> hosts;
-    std::vector<Router> routers;
+    // std::vector<Host> hosts;
+    // std::vector<Router> routers;
     std::vector<Link> links;
+    std::unordered_map<std::string, Host> hosts;
+    std::unordered_map<std::string, Router> routers;
 
     while (std::getline(file, str))
     {
@@ -22,12 +25,12 @@ int main (int argc, char **argv) {
         if (std::regex_search(str, result, std::regex("^set host (\\w+)$")))
         {
         	std::cout << "Host: " << result[1] << std::endl;
-        	hosts.emplace_back(result[1]);
+        	hosts.insert({result[1], Host(result[1])});
         }
         else if (std::regex_search(str, result, std::regex("^set router (\\w+) (\\d+)$")))
         {
         	std::cout << "Router: " << result[1] << " " << result[2] << std::endl;
-        	routers.emplace_back(result[1], stoi(result[2]));
+        	routers.insert({result[1], Router(result[1], stoi(result[2]))});
         }
         else if (std::regex_search(str, result, std::regex("^set duplex-link ([\\w\\.]+)\\s+([\\w\\.]+)\\s+(\\d+)Mbps\\s+(\\d+)ms$")))
         {
@@ -49,4 +52,11 @@ int main (int argc, char **argv) {
         else if (!str.empty())
         	std::cout << "Linha não compreendida: " << str << std::endl;
     }
+
+    for (auto& x: hosts)
+        std::cout << x.first << ": " << x.second.get_name() << std::endl;
+
+    for (auto& y: routers)
+        std::cout << y.first << ": " << y.second.get_name() << std::endl;
 }
+
