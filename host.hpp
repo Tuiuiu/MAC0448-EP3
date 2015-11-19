@@ -1,4 +1,9 @@
+#ifndef _HOST_HPP
+#define _HOST_HPP
+
 #include <string>
+
+enum Service { IRCC, IRCS, DNSS };
 
 class Host {
   public:
@@ -6,13 +11,19 @@ class Host {
   	void set_ip(const std::string &ip);
   	void set_gateway_ip(const std::string &ip);
   	void set_dns_server_ip(const std::string &ip);
+  	void set_service_type(const std::string &type);
   
   private:
   	std::string name_;
   	std::string ip_;
   	std::string gateway_ip_;
   	std::string dns_server_ip_;
+  	Service service_type_;
+
+  	int virtual_time_;
 
   	//std::vector<Link> links;
 };
 
+
+#endif // _HOST_HPP

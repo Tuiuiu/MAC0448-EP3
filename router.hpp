@@ -1,3 +1,7 @@
+#ifndef _ROUTER_HPP
+#define _ROUTER_HPP
+
+
 #include <string>
 #include <vector>
 
@@ -11,5 +15,10 @@ class Router {
   	int number_of_interfaces_;
   	std::vector<std::string> ips_;
 
+  	int virtual_time_;
+
+
   	// std::vector<Link> links;
 };
+
+#endif // _ROUTER_HPP

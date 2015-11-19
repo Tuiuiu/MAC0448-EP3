@@ -3,7 +3,7 @@
 
 Router::Router(const std::string &name, int number_of_interfaces)
 	: name_(name), number_of_interfaces_(number_of_interfaces),
-      ips_(number_of_interfaces_, "0.0.0.0") {
+      ips_(number_of_interfaces_, "0.0.0.0"), virtual_time_(0) {
 }
 
 
