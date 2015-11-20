@@ -20,7 +20,10 @@ void Host::set_dns_server_ip(const std::string &ip) {
 void Host::set_service_data(const std::string &type, const std::string &name) {
 	service_name_ = name;
 	if (type == "ircc")
+	{
 		service_type_ = IRCC;
+		application = IRC_Client();
+	}
 	else if (type == "ircs")
 		service_type_ = IRCS;
 	else if (type == "dnss")
@@ -43,16 +46,41 @@ bool Host::is_application(std::string app_name)
 	return service_name_ == app_name;
 }
 
+
+void Host::new_tick()
+{
+	while (!commands_.empty() && commands_.front().get_time() == virtual_time_)
+	{
+		Command command = commands_.front();
+		commands_.pop();
+		std::string cmd_string = command.get_command();
+
+		if (service_type_ == IRCC)
+			application.process_command(cmd_string, *this);
+	}
+	virtual_time_++;
+}
+
 void Host::print_test() {
+	std::queue<Command> aux = commands_;
 	std::cout << "IP do Host: " << ip_ << std::endl;
 	std::cout << "    |____ Gateway IP: " << gateway_ip_ << std::endl;
 	std::cout << "    |____ DNS Server IP: " << dns_server_ip_ << std::endl;
     std::cout << "    |____ Service name: " << service_name_ << std::endl;
     std::cout << "    |____ Service type: " << service_type_ << std::endl;
 	std::cout << "    |____ Commands: " << commands_.size() << std::endl;
-	while (!commands_.empty()) {
-        commands_.front().print_test();
-        commands_.pop();
+	while (!aux.empty()) {
+        aux.front().print_test();
+        aux.pop();
     }
 
+}
+
+void Host::print_datagrams()
+{
+	std::cout << "Datagramas do host " << name_ << std::endl;
+	for (auto& datagram : datagram_queue)
+	{
+		datagram.print_test();
+	}
 }
