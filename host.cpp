@@ -33,7 +33,7 @@ std::string Host::get_name() {
 	return name_;
 }
 
-void Host::add_command(float command_time, std::string command)
+void Host::add_command(int command_time, std::string command)
 {
 	commands_.emplace(command_time, command);
 }

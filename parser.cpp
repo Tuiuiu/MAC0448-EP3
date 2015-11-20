@@ -8,7 +8,7 @@
 
 #include "parser.hpp"
 
-void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, std::unordered_map<std::string, Router>& routers, std::vector<Link>& links)
+void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, std::unordered_map<std::string, Router>& routers, std::vector<Link>& links, int& finish_time)
 {
     std::string str;
     std::ifstream file(file_name);
@@ -139,7 +139,7 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
         		std::cout << result[i] << " | ";
         	std::cout << std::endl;
 
-            float command_time = stof(result[1]);
+            int command_time = 1000000 * stof(result[1]);
             std::string app_name = result[2];
             std::string command = result[3];
 
@@ -156,6 +156,7 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
         	for (unsigned int i = 1; i < result.size(); i++)
         		std::cout << result[i] << " | ";
         	std::cout << std::endl;
+            finish_time = 1000000 * stof(result[1]);
         }
         else if (!str.empty())
         	std::cout << "Linha não compreendida: " << str << std::endl;

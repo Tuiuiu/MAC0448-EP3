@@ -17,7 +17,7 @@ class Host {
   	void set_service_data(const std::string &type, const std::string &name);
   	std::string get_name();
     void print_test();
-    void add_command(float command_time, std::string command);
+    void add_command(int command_time, std::string command);
     bool is_application(std::string app_name);
       
   private:

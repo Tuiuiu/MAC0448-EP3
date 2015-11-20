@@ -6,10 +6,10 @@
 class Command
 {
   public:
-    Command(float time, std::string command) : time_(time), command_(command) {}
+    Command(int time, std::string command) : time_(time), command_(command) {}
     void print_test() { std::cout << "      |____ at time : " << time_ << " execute command \"" << command_ << "\"" << std::endl; }
   private:
-    float time_;
+    int time_;
     std::string command_;
 };
 
