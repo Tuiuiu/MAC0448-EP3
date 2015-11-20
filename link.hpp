@@ -18,13 +18,14 @@ class Link {
   	void print_test();
   	void start_sniffing(std::string file_name);
   	void stop_sniffing();
+  	bool links(std::string A, std::string B);
   private:	
 	std::string deviceA_;
 	std::string deviceB_;
 	int speed_;
 	int latency_;
 	bool is_sniffed_;
-	std::ofstream sniff_output_;
+	std::ofstream *sniff_output_;
 };
 
 
