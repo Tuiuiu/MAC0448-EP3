@@ -13,7 +13,8 @@ class Host {
   	void set_dns_server_ip(const std::string &ip);
   	void set_service_data(const std::string &type, const std::string &name);
   	std::string get_name();
-  
+    void print_test();
+      
   private:
   	std::string name_;
   	std::string ip_;

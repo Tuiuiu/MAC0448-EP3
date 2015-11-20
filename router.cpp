@@ -1,4 +1,6 @@
 #include <utility>
+#include <iostream>
+
 #include "router.hpp"
 
 Router::Router(const std::string &name, int number_of_interfaces)
@@ -31,3 +33,12 @@ std::string Router::get_name() {
 	return name_;
 }
 
+void Router::print_test() {
+	std::cout << "Router name : " << name_ << "with " << number_of_interfaces_ << " interfaces" << std::endl;
+	for (unsigned int i = 0; i < interfaces_.size(); i++)
+		interfaces_[i].print_test(i);
+}
+
+void Interface::print_test(int number) {
+	std::cout << "|____ interface number:" << number << "in IP " << ip_ << " with capacity " << interface_capacity_ << std::endl;
+}

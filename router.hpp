@@ -10,8 +10,9 @@ class Interface {
   	Interface(const std::string &ip) : ip_(ip), interface_capacity_(0) {}
   	void set_ip(const std::string &ip);
     void set_capacity(int capacity);
+    void print_test(int number);
   private:
-	std::string ip_;
+	  std::string ip_;
   	int interface_capacity_;
 };
 
@@ -22,6 +23,7 @@ class Router {
   	void set_interface_capacity(int port, int capacity);
   	void set_processment_speed(int processment_speed);
   	std::string get_name();
+    void print_test();
 
   private:
   	std::string name_;
@@ -29,9 +31,7 @@ class Router {
   	std::vector<Interface> interfaces_;
 
   	int virtual_time_;
-	int processment_speed_;
-
-
+	  int processment_speed_;
 
   	// std::vector<Link> links;
 };

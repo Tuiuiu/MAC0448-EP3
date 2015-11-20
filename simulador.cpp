@@ -1,8 +1,8 @@
 #include <cstdio>
-#include <fstream>
-#include <iostream>
 #include <regex>
 #include <vector>
+#include <fstream>
+#include <iostream>
 #include <unordered_map>
 
 #include "host.hpp"
@@ -39,7 +39,14 @@ int main (int argc, char **argv) {
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)$")))
         {
-        	std::cout << "IP de host: " << result[1] << " " << result[2] << " " << result[3] << " " << result[4] << std::endl;
+            std::string hostname = result[1];
+            std::string host_ip = result[2];
+            std::string gateway_ip = result[3];
+            std::string dns_server_ip = result[4];
+        	std::cout << "IP de host: " << hostname << " " << host_ip << " " << gateway_ip << " " << dns_server_ip << std::endl;
+            hosts.at(hostname).set_ip(host_ip);
+            hosts.at(hostname).set_gateway_ip(gateway_ip);
+            hosts.at(hostname).set_dns_server_ip(dns_server_ip);
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)(\\s+(\\d+)\\s+([\\d\\.]+))+$")))
         {
@@ -57,6 +64,8 @@ int main (int argc, char **argv) {
         		std::string ip = result[2];
         		rest_of_string = result[3];
         		printf("port = %d, ip = %s\n", port, ip.c_str());
+
+                routers.at(router_name).set_interface_ip(port, ip);
         	}
         }
         else if (std::regex_search(str, result, std::regex("^set route (\\w+)(\\s+([\\d\\.]+)\\s+([\\d\\.]+))+$")))
@@ -80,16 +89,31 @@ int main (int argc, char **argv) {
         else if (std::regex_search(str, result, std::regex("^set performance (\\w+)\\s+(\\d+)us\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)$")))
         {
         	std::cout << "Performance: ";
-        	for (unsigned int i = 1; i < result.size(); i++)
+            std::string router_name = result[1];
+            int performance = stoi(result[2]);
+
+            routers.at(router_name).set_processment_speed(performance);
+        	for (unsigned int i = 3; i < result.size(); i++) {
         		std::cout << result[i] << " | ";
+                int port = stoi(result[i]);
+                i++;
+                int queue_capacity = stoi(result[i]);
+                std::cout << result[i] << " | ";
+                routers.at(router_name).set_interface_capacity(port, queue_capacity);
+            }
+
         	std::cout << std::endl;
         }
         else if (std::regex_search(str, result, std::regex("^set ([a-z]+) (\\w+) (\\w+)$")))
         {
+            std::string app_type = result[1];
+            std::string hostname = result[2];
+            std::string app_name = result[3];
         	std::cout << "Agente da camada de aplicação: ";
         	for (unsigned int i = 1; i < result.size(); i++)
         		std::cout << result[i] << " | ";
         	std::cout << std::endl;
+            hosts.at(hostname).set_service_data(app_type, app_name);
         }
         else if (std::regex_search(str, result, std::regex("^set sniffer ([\\w\\.]+)\\s+([\\w\\.]+)\\s+\"(.*)\"$")))
         {
@@ -116,10 +140,15 @@ int main (int argc, char **argv) {
         	std::cout << "Linha não compreendida: " << str << std::endl;
     }
 
-    for (auto& x: hosts)
+    for (auto& x: hosts) {
         std::cout << x.first << ": " << x.second.get_name() << std::endl;
+        x.second.print_test();
+    }
 
-    for (auto& y: routers)
+
+    for (auto& y: routers) {
         std::cout << y.first << ": " << y.second.get_name() << std::endl;
+        y.second.print_test();
+    }
 }
 
