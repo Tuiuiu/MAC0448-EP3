@@ -33,10 +33,26 @@ std::string Host::get_name() {
 	return name_;
 }
 
+void Host::add_command(float command_time, std::string command)
+{
+	commands_.emplace(command_time, command);
+}
+
+bool Host::is_application(std::string app_name)
+{
+	return service_name_ == app_name;
+}
+
 void Host::print_test() {
 	std::cout << "IP do Host: " << ip_ << std::endl;
 	std::cout << "    |____ Gateway IP: " << gateway_ip_ << std::endl;
 	std::cout << "    |____ DNS Server IP: " << dns_server_ip_ << std::endl;
     std::cout << "    |____ Service name: " << service_name_ << std::endl;
     std::cout << "    |____ Service type: " << service_type_ << std::endl;
+	std::cout << "    |____ Commands: " << commands_.size() << std::endl;
+	while (!commands_.empty()) {
+        commands_.front().print_test();
+        commands_.pop();
+    }
+
 }

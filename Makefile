@@ -5,7 +5,7 @@ simulador: simulador.o host.o router.o link.o parser.o
 
 simulador.o: host.hpp router.hpp link.hpp parser.hpp
 
-host.o: host.hpp
+host.o: host.hpp command.hpp
 
 router.o: router.hpp
 

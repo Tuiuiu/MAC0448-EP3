@@ -1,7 +1,10 @@
 #ifndef _HOST_HPP
 #define _HOST_HPP
 
+#include <queue>
 #include <string>
+
+#include "command.hpp"
 
 enum Service { IRCC, IRCS, DNSS };
 
@@ -14,6 +17,8 @@ class Host {
   	void set_service_data(const std::string &type, const std::string &name);
   	std::string get_name();
     void print_test();
+    void add_command(float command_time, std::string command);
+    bool is_application(std::string app_name);
       
   private:
   	std::string name_;
@@ -22,6 +27,7 @@ class Host {
   	std::string dns_server_ip_;
   	Service service_type_;
   	std::string service_name_;
+    std::queue<Command> commands_;
 
   	int virtual_time_;
 

@@ -42,7 +42,7 @@ void Router::print_test() {
 	std::cout << "    |____ processment speed: " << processment_speed_ << std::endl;
 	for (unsigned int i = 0; i < interfaces_.size(); i++)
 		interfaces_[i].print_test(i);
-	std::cout << "    |____ Rotas: " << std::endl;
+	std::cout << "    |____ Rotas: " << routes_.size() << std::endl;
 	for (auto& k: routes_) {
         std::cout << "      |____ Origem: " << k.first << " Destino: " << k.second << std::endl;
     }
