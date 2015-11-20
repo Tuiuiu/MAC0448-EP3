@@ -35,8 +35,8 @@ std::string Host::get_name() {
 
 void Host::print_test() {
 	std::cout << "IP do Host: " << ip_ << std::endl;
-	std::cout << "|____ Gateway IP: " << gateway_ip_ << std::endl;
-	std::cout << "|____ DNS Server IP: " << dns_server_ip_ << std::endl;
-    std::cout << "   |____ Service name: " << service_name_ << std::endl;
-    std::cout << "   |____ Service type: " << service_type_ << std::endl;
+	std::cout << "    |____ Gateway IP: " << gateway_ip_ << std::endl;
+	std::cout << "    |____ DNS Server IP: " << dns_server_ip_ << std::endl;
+    std::cout << "    |____ Service name: " << service_name_ << std::endl;
+    std::cout << "    |____ Service type: " << service_type_ << std::endl;
 }

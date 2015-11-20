@@ -1,9 +1,9 @@
 #ifndef _ROUTER_HPP
 #define _ROUTER_HPP
 
-
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 class Interface {
   public:
@@ -22,16 +22,17 @@ class Router {
   	void set_interface_ip(int port, const std::string &ip);
   	void set_interface_capacity(int port, int capacity);
   	void set_processment_speed(int processment_speed);
-  	std::string get_name();
+    void add_route(std::string source, std::string destination);
     void print_test();
+  	std::string get_name();
 
   private:
   	std::string name_;
   	int number_of_interfaces_;
   	std::vector<Interface> interfaces_;
-
   	int virtual_time_;
-	  int processment_speed_;
+	int processment_speed_;
+	std::unordered_map<std::string, std::string> routes_;
 
   	// std::vector<Link> links;
 };

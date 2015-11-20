@@ -84,25 +84,31 @@ int main (int argc, char **argv) {
         		std::string destination = result[2];
         		rest_of_string = result[3];
         		printf("source = %s, destination = %s\n", source.c_str(), destination.c_str());
+        		routers.at(router_name).add_route(source, destination);
         	}
         }
-        else if (std::regex_search(str, result, std::regex("^set performance (\\w+)\\s+(\\d+)us\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)$")))
+        else if (std::regex_search(str, result, std::regex("^set performance (\\w+)\\s+(\\d+)us((\\s+(\\d+)\\s+(\\d+))+)$")))
         {
         	std::cout << "Performance: ";
+
             std::string router_name = result[1];
             int performance = stoi(result[2]);
+            std::string rest_of_string = result[3];
+
+            printf("router_name = %s, performance = %d\n", router_name.c_str(), performance);
 
             routers.at(router_name).set_processment_speed(performance);
-        	for (unsigned int i = 3; i < result.size(); i++) {
-        		std::cout << result[i] << " | ";
-                int port = stoi(result[i]);
-                i++;
-                int queue_capacity = stoi(result[i]);
-                std::cout << result[i] << " | ";
-                routers.at(router_name).set_interface_capacity(port, queue_capacity);
-            }
+        	
+        	while (!rest_of_string.empty())
+        	{
+        		std::regex_search(rest_of_string, result, std::regex("^\\s+(\\d+)\\s+(\\d+)(.*)$"));
+        		int port = stoi(result[1]);
+        		int queue_capacity = stoi(result[2]);
+        		rest_of_string = result[3];
+        		routers.at(router_name).set_interface_capacity(port, queue_capacity);
+        		printf("port = %d, queue_capacity = %d\n", port, queue_capacity);
+        	}
 
-        	std::cout << std::endl;
         }
         else if (std::regex_search(str, result, std::regex("^set ([a-z]+) (\\w+) (\\w+)$")))
         {
@@ -149,6 +155,11 @@ int main (int argc, char **argv) {
     for (auto& y: routers) {
         std::cout << y.first << ": " << y.second.get_name() << std::endl;
         y.second.print_test();
+    }
+
+
+    for (auto& z: links) {
+        z.print_test();
     }
 }
 
