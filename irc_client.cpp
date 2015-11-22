@@ -4,8 +4,8 @@
 
 std::vector<std::string> commands_waiting_for_dns;
 
-std::string connected_server_ip;
-int connected_server_port;
+std::string connected_server_ip = "";
+int connected_server_port = -1;
 
 void IRC_Client::process_command(std::string command, Host & host)
 {
@@ -20,6 +20,7 @@ void IRC_Client::process_command(std::string command, Host & host)
     { // não precisa de DNS
     	std::string content = "CONNECT";
     	std::string destination_ip = result[1];
+    	//printf("result[2] = %s\n", result[2].c_str());
     	int destination_port = stoi(result[2]);
     	std::string source_ip = host.ip_;
     	int source_port = IRC_CLIENT_PORT;
@@ -29,11 +30,16 @@ void IRC_Client::process_command(std::string command, Host & host)
     else if (std::regex_search(command, result, std::regex("^USER ([\\w\\d]+)$"))
     	|| std::regex_search(command, result, std::regex("^QUIT$")))
     {
-    	std::string source_ip = host.ip_;
-    	int source_port = IRC_CLIENT_PORT;
-    	std::string destination_ip = connected_server_ip;
-    	int destination_port = connected_server_port;
-    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command)));
+    	if (!connected_server_ip.empty() && connected_server_port != -1)
+    	{
+	    	std::string source_ip = host.ip_;
+	    	int source_port = IRC_CLIENT_PORT;
+	    	std::string destination_ip = connected_server_ip;
+	    	int destination_port = connected_server_port;
+	    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command)));
+	    }
+	    else
+	    	printf("Cliente IRC não conectado a nenhum servidor\n");
     }
     else
     	printf("Comando desconhecido no %s\n", host.get_name().c_str());

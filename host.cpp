@@ -27,7 +27,10 @@ void Host::set_service_data(const std::string &type, const std::string &name) {
 		application_ = new IRC_Client();
 	}
 	else if (type == "ircs")
+	{
 		service_type_ = IRCS;
+		application_ = new IRC_Server();
+	}
 	else if (type == "dnss")
 	{
 		service_type_ = DNSS;

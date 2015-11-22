@@ -9,6 +9,7 @@
 #include "datagram.hpp"
 #include "irc_client.hpp"
 #include "dns_server.hpp"
+#include "irc_server.hpp"
 #include "application.hpp"
 
 enum Service { IRCC, IRCS, DNSS };
