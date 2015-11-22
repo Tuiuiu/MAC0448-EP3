@@ -1,0 +1,19 @@
+EP3 de MAC0448
+ * Gabriel Ferreira Guilhoto    Número USP 4404279
+ * Lucas Dário                  Número USP 7990940
+
+Como compilar
+-------------
+$ make
+
+
+Como rodar
+----------
+$ ./simulator <arquivo de entrada>
+
+Se o arquivo de entrada não for informado, usa o arquivo entrada.txt.
+
+
+Nota
+----
+Não implementamos o TCP
