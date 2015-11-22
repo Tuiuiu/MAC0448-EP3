@@ -13,7 +13,7 @@ void IRC_Client::process_command(std::string command, Host & host)
     if (std::regex_search(command, result, std::regex("^CONNECT ([\\w\\d]+)\\s+(\\d+)$")))
     { // precisa de DNS
     	std::string content = std::string(result[1]) + " A IN";
-    	host.send_datagram_queue.emplace(host.ip_, host.dns_server_ip_, new UDP_Segment(DNS_CLIENT_PORT, DNS_SERVER_PORT, content));
+    	host.add_to_send_datagram_queue(Datagram(host.ip_, host.dns_server_ip_, new UDP_Segment(DNS_CLIENT_PORT, DNS_SERVER_PORT, content)));
     	commands_waiting_for_dns.push_back(command);
     }
     else if (std::regex_search(command, result, std::regex("^CONNECT ([\\d\\.]+)\\s+(\\d+)$")))
@@ -24,7 +24,7 @@ void IRC_Client::process_command(std::string command, Host & host)
     	std::string source_ip = host.ip_;
     	int source_port = IRC_CLIENT_PORT;
 
-    	host.send_datagram_queue.emplace(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content));
+    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content)));
     }
     else if (std::regex_search(command, result, std::regex("^USER ([\\w\\d]+)$"))
     	|| std::regex_search(command, result, std::regex("^QUIT$")))
@@ -33,7 +33,7 @@ void IRC_Client::process_command(std::string command, Host & host)
     	int source_port = IRC_CLIENT_PORT;
     	std::string destination_ip = connected_server_ip;
     	int destination_port = connected_server_port;
-    	host.send_datagram_queue.emplace(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command));
+    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command)));
     }
     else
     	printf("Comando desconhecido no %s\n", host.get_name().c_str());

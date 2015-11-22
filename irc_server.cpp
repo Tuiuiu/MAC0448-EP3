@@ -1,6 +1,6 @@
 #include <regex>
 
-#include "dns_server.hpp"
+#include "irc_server.hpp"
 
 void IRC_Server::receive_datagram(Datagram datagram, Host & host)
 {
@@ -11,9 +11,11 @@ void IRC_Server::receive_datagram(Datagram datagram, Host & host)
     	|| std::regex_search(message, result, std::regex("^QUIT$"))
     	)
     {
-    	std::string source = host.ip_;
-		std::string destination = datagram.get_source_ip();
+    	std::string source_ip = host.ip_;
+        int source_port = IRC_SERVER_PORT;
+		std::string destination_ip = datagram.get_source_ip();
+        int destination_port = datagram.get_source_port();
 		std::string content = ":" + host.get_name() + " " + message;
-    	host.datagram_queue.emplace_back(source, destination, content);
+    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content)));
     }
 }

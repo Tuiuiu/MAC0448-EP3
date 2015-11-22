@@ -25,7 +25,7 @@ void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 			std::string destination_ip = datagram.get_source_ip();
 			int destination_port = datagram.get_source_port();
 			std::string content = hostname + " A IN " + dns_mappings_.at(hostname);
-			host.send_datagram_queue.emplace(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content));
+			host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content)));
 		}
     }
 }

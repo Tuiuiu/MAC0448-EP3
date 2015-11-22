@@ -5,6 +5,7 @@
 #include <unordered_map>
 
 #include "application.hpp"
+#define IRC_SERVER_PORT 6667
 
 class Host;
 

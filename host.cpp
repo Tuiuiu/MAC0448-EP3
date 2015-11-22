@@ -49,6 +49,8 @@ bool Host::is_application(std::string app_name)
 
 void Host::network_tick()
 {
+	//printf("Host: virtual time %d\n", virtual_time_);
+
 	while (!commands_.empty() && commands_.front().get_time() == virtual_time_)
 	{
 		Command command = commands_.front();
@@ -79,6 +81,8 @@ void Host::network_tick()
 	}
 
 	virtual_time_ += 1;
+
+	//printf("Host: virtual time %d\n", virtual_time_);
 }
 
 
@@ -132,4 +136,11 @@ void Host::receive_datagram(Datagram content) {
 
 bool Host::send_datagram(Datagram content) {
 	return link_->send_datagram(get_name(), content);
+}
+
+void Host::add_to_send_datagram_queue(Datagram datagram)
+{
+	printf("Adicionando o datagrama ");
+	datagram.print_test();
+	send_datagram_queue.push(datagram);
 }
