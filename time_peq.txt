@@ -1,0 +1,150 @@
+./repeat_time.sh: linha 1: 18849 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.490s
+user	0m6.176s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18851 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.413s
+user	0m6.216s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18853 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.585s
+user	0m6.356s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18856 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.671s
+user	0m6.416s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18859 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.423s
+user	0m6.220s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18861 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.537s
+user	0m6.328s
+sys	0m0.020s
+./repeat_time.sh: linha 1: 18863 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.535s
+user	0m6.292s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18866 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.549s
+user	0m6.308s
+sys	0m0.012s
+./repeat_time.sh: linha 1: 18887 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m7.179s
+user	0m6.752s
+sys	0m0.016s
+./repeat_time.sh: linha 1: 18895 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.634s
+user	0m6.404s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18901 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.607s
+user	0m6.408s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18904 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.720s
+user	0m6.440s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18907 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.668s
+user	0m6.344s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18909 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.576s
+user	0m6.372s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18912 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.634s
+user	0m6.368s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18919 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.585s
+user	0m6.384s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18924 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.538s
+user	0m6.324s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18928 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.718s
+user	0m6.468s
+sys	0m0.012s
+./repeat_time.sh: linha 1: 18934 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.601s
+user	0m6.392s
+sys	0m0.016s
+./repeat_time.sh: linha 1: 18940 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.545s
+user	0m6.324s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18943 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.486s
+user	0m6.300s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18947 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.577s
+user	0m6.320s
+sys	0m0.000s
+./repeat_time.sh: linha 1: 18950 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.512s
+user	0m6.300s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18954 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.868s
+user	0m6.600s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18957 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.658s
+user	0m6.400s
+sys	0m0.012s
+./repeat_time.sh: linha 1: 18959 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.708s
+user	0m6.448s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18963 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.686s
+user	0m6.468s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18967 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.759s
+user	0m6.476s
+sys	0m0.008s
+./repeat_time.sh: linha 1: 18970 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.497s
+user	0m6.304s
+sys	0m0.004s
+./repeat_time.sh: linha 1: 18972 Abortado                (imagem do núcleo gravada) ./simulator entrada_peq.txt
+
+real	0m6.478s
+user	0m6.288s
+sys	0m0.000s

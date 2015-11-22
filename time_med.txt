@@ -1,0 +1,64 @@
+./repeat_time.sh: linha 1: 19214 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m12.070s
+user	1m9.500s
+sys	0m0.052s
+./repeat_time.sh: linha 1: 19226 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m16.304s
+user	1m10.756s
+sys	0m0.088s
+./repeat_time.sh: linha 1: 19267 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m13.529s
+user	1m10.240s
+sys	0m0.312s
+./repeat_time.sh: linha 1: 19289 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m19.650s
+user	1m13.388s
+sys	0m0.180s
+./repeat_time.sh: linha 1: 19307 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m20.755s
+user	1m13.248s
+sys	0m0.172s
+./repeat_time.sh: linha 1: 19335 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m23.595s
+user	1m15.140s
+sys	0m0.244s
+./repeat_time.sh: linha 1: 19469 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m14.495s
+user	1m10.776s
+sys	0m0.096s
+./repeat_time.sh: linha 1: 19483 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m15.069s
+user	1m11.208s
+sys	0m0.112s
+./repeat_time.sh: linha 1: 19495 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m17.819s
+user	1m12.792s
+sys	0m0.112s
+./repeat_time.sh: linha 1: 19540 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	1m18.500s
+user	1m11.788s
+sys	0m0.244s
+./repeat_time.sh: linha 1: 19552 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	0m58.138s
+user	0m57.516s
+sys	0m0.028s
+./repeat_time.sh: linha 1: 19563 Abortado                (imagem do núcleo gravada) ./simulator entrada_med.txt
+
+real	0m58.262s
+user	0m57.196s
+sys	0m0.096s
+
+real	0m41.103s
+user	0m40.592s
+sys	0m0.036s
