@@ -14,6 +14,30 @@ $ ./simulator <arquivo de entrada>
 Se o arquivo de entrada não for informado, usa o arquivo entrada.txt.
 
 
-Nota
-----
-Não implementamos o TCP
+Impementação
+------------
+  As classes principais são Host, Router e Link, além dos dados que são implementados na classe Datagram. 
+  
+  O Link basicamente transporta datagramas de um device para o outro, sendo um Device ou um Host ou uma 
+interface de um Router. Os devices, para enviar um datagrama, simplesmente criam ele e mandam
+para o Link correspondente, que então ou enviará o datagrama (se não houver fluxo de dados pelo cabo) ou
+avisará que já estão sendo enviados outros dados. Para simular a rede, temos todos os Hosts, Routers
+e Links armazenados no simulador. O simulador, então, manda todos esses elementos realizarem o
+trabalho correspondente a 1 delta(t), o que assumimos como 1us no nosso programa. Desse modo, o simulador
+chama sequencialmente a função "network_tick()" em todos os objetos, seguindo a ordem "Hosts -> Routers -> Links".
+
+
+Notas
+-----
+  * Não foi possível implementar o TCP - A alternativa foi fazer com que todos os protocolos da camada de
+aplicação fossem implementados utilizando UDP.
+
+  * Ao final da execução do programa, alguns erros são enviados à saída padrão. A provável causa
+é algum ponteiro cujo "free" é chamado mais de uma vez. Infelizmente, por conta do prazo,
+não conseguimos resolver ele, porém esse problema só acontece após a execução total do programa,
+portanto não interfere na simulação.
+  
+Alguns problemas por conta da falta de tempo do fim do semestre: 
+  * Não foi possível adicionar os cálculos dos intervalos de confiança;
+  * Não conseguimos gerar arquivos de entrada grandes;
+  * Como dito anteriormente, não implementamos o protocolo TCP.
