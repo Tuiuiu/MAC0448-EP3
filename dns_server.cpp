@@ -4,8 +4,6 @@
 
 void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 {
-	//printf("=====================================================OI \n");
-
 	std::smatch result;
 	std::string datagram_message = datagram.get_message();
 	
@@ -13,13 +11,9 @@ void DNS_Server::receive_datagram(Datagram datagram, Host & host)
     {
     	std::string hostname = result[1];
     	std::unordered_map<std::string, std::string>::const_iterator iterator = dns_mappings_.find(hostname);
-		if (iterator == dns_mappings_.end()) // Não encontrou
-		{	
-			//printf("Não encontrou\n");
-		}
-		else // Encontrou
+		if (iterator != dns_mappings_.end()) // Encontrou
 		{
-			//printf("Encontrou\n");
+			// printf("Encontrou\n");
 			std::string datagram_id = hostname + "." + std::to_string(host.get_count_and_add());
 			std::string source_ip = host.ip_;
 			int source_port = DNS_SERVER_PORT;
@@ -27,6 +21,10 @@ void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 			int destination_port = datagram.get_source_port();
 			std::string content = hostname + " A IN " + dns_mappings_.at(hostname);
 			host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content), datagram_id));
+		}
+		else 
+		{
+			printf("Hostname não encontrado.\n");
 		}
     }
 }

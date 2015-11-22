@@ -94,7 +94,6 @@ void Host::print_dns()
 {
 	if (service_type_ == DNSS)
 	{
-		printf("Mapeamentos DNS de %s:\n", get_name().c_str());
 		((DNS_Server*) application_)->print_dns();
 	}
 	else
@@ -110,7 +109,7 @@ void Host::print_test() {
     std::cout << "    |____ Service type: " << service_type_ << std::endl;
 	std::cout << "    |____ Commands: " << commands_.size() << std::endl;
 	while (!aux.empty()) {
-        aux.front().print_test();
+        // aux.front().print_test();
         aux.pop();
     }
 
@@ -131,14 +130,11 @@ void Host::receive_datagram(Datagram content) {
 }
 
 bool Host::send_datagram(Datagram content) {
-	std::cout << "Getname do host: " << get_name() << std::endl;
-	std::cout << "getname dentro do link: " << link_->deviceA_->get_name() << std::endl;
 	return link_->send_datagram(get_name(), content);
 }
 
 void Host::add_to_send_datagram_queue(Datagram datagram)
 {
-	printf("Adicionando o datagrama ");
-	datagram.print_test();
+	// datagram.print_test();
 	send_datagram_queue.push(datagram);
 }

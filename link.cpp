@@ -32,11 +32,6 @@ bool Link::links(std::string A, std::string B)
 }
 
 bool Link::send_datagram(std::string src_name, Datagram content) {
-	std::cout << "O SRC NAME DOIDO É: " << src_name << std::endl;
-	std::cout << "DEVICEA: " << deviceA_->get_name() << std::endl;
-	std::cout << "DEVICEB: " << deviceB_->get_name() << std::endl;
-	std::cout << "mensagem: " << content.get_message() << std::endl;
-	std::cout << "destination ip: " << content.get_destination_ip() << std::endl;
 	if(src_name == deviceA_->get_name()) {
 		if(processment_a_to_b_ == -1) {
 			processment_a_to_b_ = 1000; // Aqui tem que fazer algo do tipo: Calcular o tempo
@@ -73,7 +68,7 @@ bool Link::send_datagram(std::string src_name, Datagram content) {
 		}
 	} 
 	else {
-		std::cout << "Deu ruim cara... sério... Na hora de mandar coisas no Link" << std::endl;
+		// "Deu ruim cara... sério... Na hora de mandar coisas no Link" << std::endl;
 		return false;
 	}
 }
@@ -110,15 +105,17 @@ void Link::print_sniffed_content(int direction, Datagram content) {
 	
 	cabecalho = "ID: " + content.get_id() + " Time: " + std::to_string(virtual_time_) 
 	+ " Sniffer entre " + deviceA_->get_name() + " e " + deviceB_->get_name() + "\n";
-	rede = "Camada de Rede: \n|__ IP Origem: " + content.get_source_ip() 
-	+ "\n|__ IP Destino: " + content.get_destination_ip() 
-	+ "\n|__ Tipo de protocolo de transporte: " + content.get_type();
-	transporte = "Camada de Transporte: \n|__ Porta da fonte: " + 
-	std::to_string(content.get_source_port()) + "\n|__ Porta do destino: " +
-	std::to_string(content.get_destination_port());
-	aplicacao = "Camada de Aplicação: \n|__ Conteudo da mensagem: " + content.get_message() + "\n";
+	rede = " |_Camada de Rede: \n   |_ IP Origem: " + content.get_source_ip() 
+	+ "\n   |_ IP Destino: " + content.get_destination_ip() 
+	+ "\n   |_ Tipo de protocolo de transporte: " + content.get_type();
+	transporte = "\n |_Camada de Transporte: \n   |_ Porta da fonte: " 
+	+ std::to_string(content.get_source_port()) + "\n   |_ Porta do destino: " 
+	+ std::to_string(content.get_destination_port());
+	aplicacao = "\n |_|Camada de Aplicação: \n   |_ Conteudo da mensagem: " 
+	+ content.get_message() + "\n";
+	
+	std::cout << cabecalho <<  rede << transporte << aplicacao << std::endl;
 
-	std::cout << cabecalho << rede << transporte << aplicacao << std::endl;
 	(*sniff_output_) << cabecalho << rede << transporte << aplicacao << ".\n";
 
 

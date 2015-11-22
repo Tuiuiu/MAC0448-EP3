@@ -12,7 +12,7 @@ void IRC_Server::receive_datagram(Datagram datagram, Host & host)
     	|| std::regex_search(message, result, std::regex("^QUIT$"))
     	)
     {
-        datagram_id += "." + host.get_count_and_add();
+        datagram_id = datagram_id + "." + std::to_string(host.get_count_and_add());
     	std::string source_ip = host.ip_;
         int source_port = IRC_SERVER_PORT;
 		std::string destination_ip = datagram.get_source_ip();
