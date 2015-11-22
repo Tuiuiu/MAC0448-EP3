@@ -5,6 +5,8 @@
 
 #include "application.hpp"
 
+#define IRC_CLIENT_PORT 6000
+
 class Host;
 
 class IRC_Client : public Application {

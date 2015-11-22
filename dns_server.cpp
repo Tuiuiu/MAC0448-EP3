@@ -2,13 +2,9 @@
 
 #include "dns_server.hpp"
 
-void DNS_Server::process_command(std::string command, Host & host)
-{
-}
-
 void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 {
-	printf("=====================================================OI \n");
+	//printf("=====================================================OI \n");
 
 	std::smatch result;
     if (std::regex_search(datagram.get_message(), result, std::regex("^(\\w+) A IN$")))
@@ -22,10 +18,12 @@ void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 		else // Encontrou
 		{
 			//printf("Encontrou\n");
-			std::string source = host.ip_;
-			std::string destination = datagram.get_source_ip();
+			std::string source_ip = host.ip_;
+			int source_port = DNS_SERVER_PORT;
+			std::string destination_ip = datagram.get_source_ip();
+			int destination_port = datagram.get_source_port();
 			std::string content = hostname + " A IN " + dns_mappings_.at(hostname);
-			host.datagram_queue.emplace_back(source, destination, content);
+			host.datagram_queue.emplace_back(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content));
 		}
     }
 }
