@@ -22,12 +22,15 @@ void Host::set_service_data(const std::string &type, const std::string &name) {
 	if (type == "ircc")
 	{
 		service_type_ = IRCC;
-		application = IRC_Client();
+		application_ = new IRC_Client();
 	}
 	else if (type == "ircs")
 		service_type_ = IRCS;
 	else if (type == "dnss")
+	{
 		service_type_ = DNSS;
+		application_ = new DNS_Server();
+	}
 	else
 		std::cout << "Tipo de serviço não existente!" << std::endl;
 }
@@ -56,9 +59,29 @@ void Host::new_tick()
 		std::string cmd_string = command.get_command();
 
 		if (service_type_ == IRCC)
-			application.process_command(cmd_string, *this);
+			application_->process_command(cmd_string, *this);
 	}
 	virtual_time_++;
+}
+
+
+void Host::add_dns(std::string host, std::string ip)
+{
+	if (service_type_ == DNSS)
+		((DNS_Server*) application_)->add_dns(host, ip);
+	else
+		printf("%s não é um servidor DNS\n", name_.c_str());
+}
+
+void Host::print_dns()
+{
+	if (service_type_ == DNSS)
+	{
+		printf("Mapeamentos DNS de %s:\n", name_.c_str());
+		((DNS_Server*) application_)->print_dns();
+	}
+	else
+		printf("%s não é um servidor DNS\n", name_.c_str());
 }
 
 void Host::print_test() {

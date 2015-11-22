@@ -110,11 +110,22 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
             std::string app_type = result[1];
             std::string hostname = result[2];
             std::string app_name = result[3];
-        	std::cout << "Agente da camada de aplicação: ";
+        	
+            std::cout << "Agente da camada de aplicação: ";
         	for (unsigned int i = 1; i < result.size(); i++)
         		std::cout << result[i] << " | ";
         	std::cout << std::endl;
+            
             hosts.at(hostname).set_service_data(app_type, app_name);
+            if (app_type == "dnss")
+            {
+                Host* dns_server = &hosts.at(hostname);
+                for (auto host : hosts)
+                    dns_server->add_dns(host.first, host.second.ip_);
+                dns_server->print_dns();
+
+                //dns_server->application_->receive_datagram(Datagram("10.0.0.1", "192.168.1.1", "h1 A IN"), *dns_server);
+            }
         }
         else if (std::regex_search(str, result, std::regex("^set sniffer ([\\w\\.]+)\\s+([\\w\\.]+)\\s+\"(.*)\"$")))
         {

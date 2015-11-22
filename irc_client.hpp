@@ -2,15 +2,16 @@
 #define _IRC_CLIENT_HPP
 
 #include <string>
-#include <iostream>
-#include <fstream>
+
+#include "application.hpp"
 
 class Host;
 
-class IRC_Client {
+class IRC_Client : public Application {
   public:
     IRC_Client() {}
   	void process_command(std::string command, Host & host);
+  	void receive_datagram(Datagram datagram, Host & host);
   private:	
 };
 
