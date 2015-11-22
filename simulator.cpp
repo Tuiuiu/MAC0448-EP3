@@ -20,7 +20,7 @@ int main (int argc, char **argv) {
 
         printf("Lendo entrada de %s\n", input_file_name.c_str());
         parse(input_file_name, hosts, routers, links, finish_time);
-        printf("finish_time = %d\n", finish_time);
+        // printf("finish_time = %d\n", finish_time);
         
         for (simulator_tick = 0; simulator_tick <= finish_time; simulator_tick++)
         {

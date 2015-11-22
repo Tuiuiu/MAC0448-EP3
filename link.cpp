@@ -14,6 +14,8 @@ void Link::start_sniffing(std::string file_name)
 	sniff_output_ = new std::ofstream;
 	sniff_output_->open (file_name);
 	(*sniff_output_) << "Sniffing interfaces " << deviceA_->get_name() << " to " << deviceB_->get_name() << ".\n";
+	(*sniff_output_) << "=================================================" << "\n";
+
 }
 
 void Link::stop_sniffing()
@@ -101,22 +103,25 @@ void Link::print_sniffed_content(int direction, Datagram content) {
 	std::string rede;
 	std::string transporte;
 	std::string aplicacao;
+	std::string divisor("-------------------------------------------------");
 	// if (direction == 0) { // do A para o B
 	
 	cabecalho = "ID: " + content.get_id() + " Time: " + std::to_string(virtual_time_) 
-	+ " Sniffer entre " + deviceA_->get_name() + " e " + deviceB_->get_name() + "\n";
-	rede = " |_Camada de Rede: \n   |_ IP Origem: " + content.get_source_ip() 
-	+ "\n   |_ IP Destino: " + content.get_destination_ip() 
-	+ "\n   |_ Tipo de protocolo de transporte: " + content.get_type();
-	transporte = "\n |_Camada de Transporte: \n   |_ Porta da fonte: " 
-	+ std::to_string(content.get_source_port()) + "\n   |_ Porta do destino: " 
+	+ " Sniffer between " + deviceA_->get_name() + " and " + deviceB_->get_name() + ": \n";
+	rede = " |_ Network Layer: \n |  * Source IP: " + content.get_source_ip() 
+	+ "\n |  * Destination IP: " + content.get_destination_ip() 
+	+ "\n |  * Transport layer protocol type: " + content.get_type()
+	+ "\n |  * TTL: " + std::to_string(content.get_ttl());
+	transporte = "\n |_Transport Layer: \n |  * Source port: " 
+	+ std::to_string(content.get_source_port()) + "\n |  * Destination port: " 
 	+ std::to_string(content.get_destination_port());
-	aplicacao = "\n |_|Camada de Aplicação: \n   |_ Conteudo da mensagem: " 
+	aplicacao = "\n |_ Application layer: \n    * Message content: " 
 	+ content.get_message() + "\n";
 	
-	std::cout << cabecalho <<  rede << transporte << aplicacao << std::endl;
+	
+	std::cout << cabecalho <<  rede << transporte << aplicacao << divisor << std::endl;
 
-	(*sniff_output_) << cabecalho << rede << transporte << aplicacao << ".\n";
+	(*sniff_output_) << cabecalho << rede << transporte << aplicacao << divisor << "\n";
 
 
 
