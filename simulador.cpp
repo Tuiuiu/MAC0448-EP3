@@ -33,14 +33,17 @@ int main (int argc, char **argv) {
     	}
     }
 
+    printf("Oi1\n");
 
     for (auto z: links) {
         z->stop_sniffing();
     }
 
+    printf("Oi2\n");
     for (auto& h: hosts) {
         h.second.print_datagrams();
     }
 
+    printf("Oi3\n");
     return 0;
 }
