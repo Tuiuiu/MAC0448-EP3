@@ -1,0 +1,365 @@
+set host h0
+set host h1
+set host h2
+set host h3
+set host h4
+set host h5
+set host h6
+set host h7
+set host h8
+set host h9
+set host h10
+set host h11
+set host h12
+set host h13
+set host h14
+set host h15
+set host h16
+set host h17
+set host h18
+set host h19
+set host h20
+set host h21
+set host h22
+set host h23
+set host h24
+set host h25
+set host h26
+set host h27
+set host h28
+set host h29
+set host h30
+set host h31
+set host h32
+set host h33
+set host h34
+set host h35
+set host h36
+set host h37
+set host h38
+set host h39
+set host h40
+set host h41
+set host h42
+set host h43
+set host h44
+set host h45
+set host h46
+set host h47
+set host h48
+set host h49
+
+set router r0 49
+set router r1 3
+
+set duplex-link h0 r0.0 10Mbps 10ms
+set duplex-link h1 r0.1 10Mbps 10ms
+set duplex-link h2 r0.2 10Mbps 10ms
+set duplex-link h3 r0.3 10Mbps 10ms
+set duplex-link h4 r0.4 10Mbps 10ms
+set duplex-link h5 r0.5 10Mbps 10ms
+set duplex-link h6 r0.6 10Mbps 10ms
+set duplex-link h7 r0.7 10Mbps 10ms
+set duplex-link h8 r0.8 10Mbps 10ms
+set duplex-link h9 r0.9 10Mbps 10ms
+set duplex-link h10 r0.10 10Mbps 10ms
+set duplex-link h11 r0.11 10Mbps 10ms
+set duplex-link h12 r0.12 10Mbps 10ms
+set duplex-link h13 r0.13 10Mbps 10ms
+set duplex-link h14 r0.14 10Mbps 10ms
+set duplex-link h15 r0.15 10Mbps 10ms
+set duplex-link h16 r0.16 10Mbps 10ms
+set duplex-link h17 r0.17 10Mbps 10ms
+set duplex-link h18 r0.18 10Mbps 10ms
+set duplex-link h19 r0.19 10Mbps 10ms
+set duplex-link h20 r0.20 10Mbps 10ms
+set duplex-link h21 r0.21 10Mbps 10ms
+set duplex-link h22 r0.22 10Mbps 10ms
+set duplex-link h23 r0.23 10Mbps 10ms
+set duplex-link h24 r0.24 10Mbps 10ms
+set duplex-link h25 r0.25 10Mbps 10ms
+set duplex-link h26 r0.26 10Mbps 10ms
+set duplex-link h27 r0.27 10Mbps 10ms
+set duplex-link h28 r0.28 10Mbps 10ms
+set duplex-link h29 r0.29 10Mbps 10ms
+set duplex-link h30 r0.30 10Mbps 10ms
+set duplex-link h31 r0.31 10Mbps 10ms
+set duplex-link h32 r0.32 10Mbps 10ms
+set duplex-link h33 r0.33 10Mbps 10ms
+set duplex-link h34 r0.34 10Mbps 10ms
+set duplex-link h35 r0.35 10Mbps 10ms
+set duplex-link h36 r0.36 10Mbps 10ms
+set duplex-link h37 r0.37 10Mbps 10ms
+set duplex-link h38 r0.38 10Mbps 10ms
+set duplex-link h39 r0.39 10Mbps 10ms
+set duplex-link h40 r0.40 10Mbps 10ms
+set duplex-link h41 r0.41 10Mbps 10ms
+set duplex-link h42 r0.42 10Mbps 10ms
+set duplex-link h43 r0.43 10Mbps 10ms
+set duplex-link h44 r0.44 10Mbps 10ms
+set duplex-link h45 r0.45 10Mbps 10ms
+set duplex-link h46 r0.46 10Mbps 10ms
+set duplex-link h47 r0.47 10Mbps 10ms
+set duplex-link r0.48 	r1.0	2Mbps		20ms
+set duplex-link r1.1	h48		10Mbps	5ms
+set duplex-link r1.2	h49		5Mbps		2ms
+
+set ip h0 10.0.0.1		10.0.0.2		192.168.1.1
+set ip h1 10.0.1.1		10.0.1.2		192.168.1.1
+set ip h2 10.0.2.1		10.0.2.2		192.168.1.1
+set ip h3 10.0.3.1		10.0.3.2		192.168.1.1
+set ip h4 10.0.4.1		10.0.4.2		192.168.1.1
+set ip h5 10.0.5.1		10.0.5.2		192.168.1.1
+set ip h6 10.0.6.1		10.0.6.2		192.168.1.1
+set ip h7 10.0.7.1		10.0.7.2		192.168.1.1
+set ip h8 10.0.8.1		10.0.8.2		192.168.1.1
+set ip h9 10.0.9.1		10.0.9.2		192.168.1.1
+set ip h10 10.0.10.1		10.0.10.2		192.168.1.1
+set ip h11 10.0.11.1		10.0.11.2		192.168.1.1
+set ip h12 10.0.12.1		10.0.12.2		192.168.1.1
+set ip h13 10.0.13.1		10.0.13.2		192.168.1.1
+set ip h14 10.0.14.1		10.0.14.2		192.168.1.1
+set ip h15 10.0.15.1		10.0.15.2		192.168.1.1
+set ip h16 10.0.16.1		10.0.16.2		192.168.1.1
+set ip h17 10.0.17.1		10.0.17.2		192.168.1.1
+set ip h18 10.0.18.1		10.0.18.2		192.168.1.1
+set ip h19 10.0.19.1		10.0.19.2		192.168.1.1
+set ip h20 10.0.20.1		10.0.20.2		192.168.1.1
+set ip h21 10.0.21.1		10.0.21.2		192.168.1.1
+set ip h22 10.0.22.1		10.0.22.2		192.168.1.1
+set ip h23 10.0.23.1		10.0.23.2		192.168.1.1
+set ip h24 10.0.24.1		10.0.24.2		192.168.1.1
+set ip h25 10.0.25.1		10.0.25.2		192.168.1.1
+set ip h26 10.0.26.1		10.0.26.2		192.168.1.1
+set ip h27 10.0.27.1		10.0.27.2		192.168.1.1
+set ip h28 10.0.28.1		10.0.28.2		192.168.1.1
+set ip h29 10.0.29.1		10.0.29.2		192.168.1.1
+set ip h30 10.0.30.1		10.0.30.2		192.168.1.1
+set ip h31 10.0.31.1		10.0.31.2		192.168.1.1
+set ip h32 10.0.32.1		10.0.32.2		192.168.1.1
+set ip h33 10.0.33.1		10.0.33.2		192.168.1.1
+set ip h34 10.0.34.1		10.0.34.2		192.168.1.1
+set ip h35 10.0.35.1		10.0.35.2		192.168.1.1
+set ip h36 10.0.36.1		10.0.36.2		192.168.1.1
+set ip h37 10.0.37.1		10.0.37.2		192.168.1.1
+set ip h38 10.0.38.1		10.0.38.2		192.168.1.1
+set ip h39 10.0.39.1		10.0.39.2		192.168.1.1
+set ip h40 10.0.40.1		10.0.40.2		192.168.1.1
+set ip h41 10.0.41.1		10.0.41.2		192.168.1.1
+set ip h42 10.0.42.1		10.0.42.2		192.168.1.1
+set ip h43 10.0.43.1		10.0.43.2		192.168.1.1
+set ip h44 10.0.44.1		10.0.44.2		192.168.1.1
+set ip h45 10.0.45.1		10.0.45.2		192.168.1.1
+set ip h46 10.0.46.1		10.0.46.2		192.168.1.1
+set ip h47 10.0.47.1		10.0.47.2		192.168.1.1
+set ip h48 192.168.2.2	192.168.2.3		192.168.1.1
+set ip h49 192.168.1.1 	192.168.1.2 	1.1.1.1
+
+set ip r0 0 10.0.0.2 1 10.0.1.2 2 10.0.2.2 3 10.0.3.2 4 10.0.4.2 5 10.0.5.2 6 10.0.6.2 7 10.0.7.2 8 10.0.8.2 9 10.0.9.2 10 10.0.10.2 11 10.0.11.2 12 10.0.12.2 13 10.0.13.2 14 10.0.14.2 15 10.0.15.2 16 10.0.16.2 17 10.0.17.2 18 10.0.18.2 19 10.0.19.2 20 10.0.20.2 21 10.0.21.2 22 10.0.22.2 23 10.0.23.2 24 10.0.24.2 25 10.0.25.2 26 10.0.26.2 27 10.0.27.2 28 10.0.28.2 29 10.0.29.2 30 10.0.30.2 31 10.0.31.2 32 10.0.32.2 33 10.0.33.2 34 10.0.34.2 35 10.0.35.2 36 10.0.36.2 37 10.0.37.2 38 10.0.38.2 39 10.0.39.2 40 10.0.40.2 41 10.0.41.2 42 10.0.42.2 43 10.0.43.2 44 10.0.44.2 45 10.0.45.2 46 10.0.46.2 47 10.0.47.2 48 192.168.3.3
+set ip r1 0 192.168.3.4 1 192.168.2.3 2 192.168.1.2
+
+set route r0 10.0.0.0 0 10.0.1.0 1 10.0.2.0 2 10.0.3.0 3 10.0.4.0 4 10.0.5.0 5 10.0.6.0 6 10.0.7.0 7 10.0.8.0 8 10.0.9.0 9 10.0.10.0 10 10.0.11.0 11 10.0.12.0 12 10.0.13.0 13 10.0.14.0 14 10.0.15.0 15 10.0.16.0 16 10.0.17.0 17 10.0.18.0 18 10.0.19.0 19 10.0.20.0 20 10.0.21.0 21 10.0.22.0 22 10.0.23.0 23 10.0.24.0 24 10.0.25.0 25 10.0.26.0 26 10.0.27.0 27 10.0.28.0 28 10.0.29.0 29 10.0.30.0 30 10.0.31.0 31 10.0.32.0 32 10.0.33.0 33 10.0.34.0 34 10.0.35.0 35 10.0.36.0 36 10.0.37.0 37 10.0.38.0 38 10.0.39.0 39 10.0.40.0 40 10.0.41.0 41 10.0.42.0 42 10.0.43.0 43 10.0.44.0 44 10.0.45.0 45 10.0.46.0 46 10.0.47.0 47 192.168.3.0 48 192.168.2.0 192.168.3.4 192.168.1.0 192.168.3.4
+set route r1 192.168.3.0 0 192.168.2.0 1 192.168.1.0 2 10.0.0.0 192.168.3.3 10.0.1.0 192.168.3.3 10.0.2.0 192.168.3.3 10.0.3.0 192.168.3.3 10.0.4.0 192.168.3.3 10.0.5.0 192.168.3.3 10.0.6.0 192.168.3.3 10.0.7.0 192.168.3.3 10.0.8.0 192.168.3.3 10.0.9.0 192.168.3.3 10.0.10.0 192.168.3.3 10.0.11.0 192.168.3.3 10.0.12.0 192.168.3.3 10.0.13.0 192.168.3.3 10.0.14.0 192.168.3.3 10.0.15.0 192.168.3.3 10.0.16.0 192.168.3.3 10.0.17.0 192.168.3.3 10.0.18.0 192.168.3.3 10.0.19.0 192.168.3.3 10.0.20.0 192.168.3.3 10.0.21.0 192.168.3.3 10.0.22.0 192.168.3.3 10.0.23.0 192.168.3.3 10.0.24.0 192.168.3.3 10.0.25.0 192.168.3.3 10.0.26.0 192.168.3.3 10.0.27.0 192.168.3.3 10.0.28.0 192.168.3.3 10.0.29.0 192.168.3.3 10.0.30.0 192.168.3.3 10.0.31.0 192.168.3.3 10.0.32.0 192.168.3.3 10.0.33.0 192.168.3.3 10.0.34.0 192.168.3.3 10.0.35.0 192.168.3.3 10.0.36.0 192.168.3.3 10.0.37.0 192.168.3.3 10.0.38.0 192.168.3.3 10.0.39.0 192.168.3.3 10.0.40.0 192.168.3.3 10.0.41.0 192.168.3.3 10.0.42.0 192.168.3.3 10.0.43.0 192.168.3.3 10.0.44.0 192.168.3.3 10.0.45.0 192.168.3.3 10.0.46.0 192.168.3.3 10.0.47.0 192.168.3.3
+
+set performance r0 100us 0 1000 1 1000 2 1000
+set performance r1 20us 0 1000 1 1000 2 1000
+
+set ircc h0 irc1
+set ircc h1 irc2
+set ircc h2 irc3
+set ircc h3 irc4
+set ircc h4 irc5
+set ircc h5 irc6
+set ircc h6 irc7
+set ircc h7 irc8
+set ircc h8 irc9
+set ircc h9 irc10
+set ircc h10 irc11
+set ircc h11 irc12
+set ircc h12 irc13
+set ircc h13 irc14
+set ircc h14 irc15
+set ircc h15 irc16
+set ircc h16 irc17
+set ircc h17 irc18
+set ircc h18 irc19
+set ircc h19 irc20
+set ircc h20 irc21
+set ircc h21 irc22
+set ircc h22 irc23
+set ircc h23 irc24
+set ircc h24 irc25
+set ircc h25 irc26
+set ircc h26 irc27
+set ircc h27 irc28
+set ircc h28 irc29
+set ircc h29 irc30
+set ircc h30 irc31
+set ircc h31 irc32
+set ircc h32 irc33
+set ircc h33 irc34
+set ircc h34 irc35
+set ircc h35 irc36
+set ircc h36 irc37
+set ircc h37 irc38
+set ircc h38 irc39
+set ircc h39 irc40
+set ircc h40 irc41
+set ircc h41 irc42
+set ircc h42 irc43
+set ircc h43 irc44
+set ircc h44 irc45
+set ircc h45 irc46
+set ircc h46 irc47
+set ircc h47 irc48
+set ircs h48 irc49
+set dnss h49 dns1
+
+set sniffer r0.2 r1.0 "/tmp/sniffer1"
+set sniffer h1 r0.1 "/tmp/sniffer2"
+
+simulate 1.0 irc1 "CONNECT h2 6667"
+simulate 1.0 irc2 "CONNECT h2 6667"
+simulate 1.0 irc3 "CONNECT h2 6667"
+simulate 1.0 irc4 "CONNECT h2 6667"
+simulate 1.0 irc5 "CONNECT h2 6667"
+simulate 1.0 irc6 "CONNECT h2 6667"
+simulate 1.0 irc7 "CONNECT h2 6667"
+simulate 1.0 irc8 "CONNECT h2 6667"
+simulate 1.0 irc9 "CONNECT h2 6667"
+simulate 1.0 irc10 "CONNECT h2 6667"
+simulate 1.0 irc11 "CONNECT h2 6667"
+simulate 1.0 irc12 "CONNECT h2 6667"
+simulate 1.0 irc13 "CONNECT h2 6667"
+simulate 1.0 irc14 "CONNECT h2 6667"
+simulate 1.0 irc15 "CONNECT h2 6667"
+simulate 1.0 irc16 "CONNECT h2 6667"
+simulate 1.0 irc17 "CONNECT h2 6667"
+simulate 1.0 irc18 "CONNECT h2 6667"
+simulate 1.0 irc19 "CONNECT h2 6667"
+simulate 1.0 irc20 "CONNECT h2 6667"
+simulate 1.0 irc21 "CONNECT h2 6667"
+simulate 1.0 irc22 "CONNECT h2 6667"
+simulate 1.0 irc23 "CONNECT h2 6667"
+simulate 1.0 irc24 "CONNECT h2 6667"
+simulate 1.0 irc25 "CONNECT h2 6667"
+simulate 1.0 irc26 "CONNECT h2 6667"
+simulate 1.0 irc27 "CONNECT h2 6667"
+simulate 1.0 irc28 "CONNECT h2 6667"
+simulate 1.0 irc29 "CONNECT h2 6667"
+simulate 1.0 irc30 "CONNECT h2 6667"
+simulate 1.0 irc31 "CONNECT h2 6667"
+simulate 1.0 irc32 "CONNECT h2 6667"
+simulate 1.0 irc33 "CONNECT h2 6667"
+simulate 1.0 irc34 "CONNECT h2 6667"
+simulate 1.0 irc35 "CONNECT h2 6667"
+simulate 1.0 irc36 "CONNECT h2 6667"
+simulate 1.0 irc37 "CONNECT h2 6667"
+simulate 1.0 irc38 "CONNECT h2 6667"
+simulate 1.0 irc39 "CONNECT h2 6667"
+simulate 1.0 irc40 "CONNECT h2 6667"
+simulate 1.0 irc41 "CONNECT h2 6667"
+simulate 1.0 irc42 "CONNECT h2 6667"
+simulate 1.0 irc43 "CONNECT h2 6667"
+simulate 1.0 irc44 "CONNECT h2 6667"
+simulate 1.0 irc45 "CONNECT h2 6667"
+simulate 1.0 irc46 "CONNECT h2 6667"
+simulate 1.0 irc47 "CONNECT h2 6667"
+simulate 1.0 irc48 "CONNECT h2 6667"
+simulate 2.0 irc1 "USER usuario1"
+simulate 2.0 irc2 "USER usuario2"
+simulate 2.0 irc3 "USER usuario3"
+simulate 2.0 irc4 "USER usuario4"
+simulate 2.0 irc5 "USER usuario5"
+simulate 2.0 irc6 "USER usuario6"
+simulate 2.0 irc7 "USER usuario7"
+simulate 2.0 irc8 "USER usuario8"
+simulate 2.0 irc9 "USER usuario9"
+simulate 2.0 irc10 "USER usuario10"
+simulate 2.0 irc11 "USER usuario11"
+simulate 2.0 irc12 "USER usuario12"
+simulate 2.0 irc13 "USER usuario13"
+simulate 2.0 irc14 "USER usuario14"
+simulate 2.0 irc15 "USER usuario15"
+simulate 2.0 irc16 "USER usuario16"
+simulate 2.0 irc17 "USER usuario17"
+simulate 2.0 irc18 "USER usuario18"
+simulate 2.0 irc19 "USER usuario19"
+simulate 2.0 irc20 "USER usuario20"
+simulate 2.0 irc21 "USER usuario21"
+simulate 2.0 irc22 "USER usuario22"
+simulate 2.0 irc23 "USER usuario23"
+simulate 2.0 irc24 "USER usuario24"
+simulate 2.0 irc25 "USER usuario25"
+simulate 2.0 irc26 "USER usuario26"
+simulate 2.0 irc27 "USER usuario27"
+simulate 2.0 irc28 "USER usuario28"
+simulate 2.0 irc29 "USER usuario29"
+simulate 2.0 irc30 "USER usuario30"
+simulate 2.0 irc31 "USER usuario31"
+simulate 2.0 irc32 "USER usuario32"
+simulate 2.0 irc33 "USER usuario33"
+simulate 2.0 irc34 "USER usuario34"
+simulate 2.0 irc35 "USER usuario35"
+simulate 2.0 irc36 "USER usuario36"
+simulate 2.0 irc37 "USER usuario37"
+simulate 2.0 irc38 "USER usuario38"
+simulate 2.0 irc39 "USER usuario39"
+simulate 2.0 irc40 "USER usuario40"
+simulate 2.0 irc41 "USER usuario41"
+simulate 2.0 irc42 "USER usuario42"
+simulate 2.0 irc43 "USER usuario43"
+simulate 2.0 irc44 "USER usuario44"
+simulate 2.0 irc45 "USER usuario45"
+simulate 2.0 irc46 "USER usuario46"
+simulate 2.0 irc47 "USER usuario47"
+simulate 2.0 irc48 "USER usuario48"
+simulate 3.0 irc1 "QUIT"
+simulate 3.0 irc2 "QUIT"
+simulate 3.0 irc3 "QUIT"
+simulate 3.0 irc4 "QUIT"
+simulate 3.0 irc5 "QUIT"
+simulate 3.0 irc6 "QUIT"
+simulate 3.0 irc7 "QUIT"
+simulate 3.0 irc8 "QUIT"
+simulate 3.0 irc9 "QUIT"
+simulate 3.0 irc10 "QUIT"
+simulate 3.0 irc11 "QUIT"
+simulate 3.0 irc12 "QUIT"
+simulate 3.0 irc13 "QUIT"
+simulate 3.0 irc14 "QUIT"
+simulate 3.0 irc15 "QUIT"
+simulate 3.0 irc16 "QUIT"
+simulate 3.0 irc17 "QUIT"
+simulate 3.0 irc18 "QUIT"
+simulate 3.0 irc19 "QUIT"
+simulate 3.0 irc20 "QUIT"
+simulate 3.0 irc21 "QUIT"
+simulate 3.0 irc22 "QUIT"
+simulate 3.0 irc23 "QUIT"
+simulate 3.0 irc24 "QUIT"
+simulate 3.0 irc25 "QUIT"
+simulate 3.0 irc26 "QUIT"
+simulate 3.0 irc27 "QUIT"
+simulate 3.0 irc28 "QUIT"
+simulate 3.0 irc29 "QUIT"
+simulate 3.0 irc30 "QUIT"
+simulate 3.0 irc31 "QUIT"
+simulate 3.0 irc32 "QUIT"
+simulate 3.0 irc33 "QUIT"
+simulate 3.0 irc34 "QUIT"
+simulate 3.0 irc35 "QUIT"
+simulate 3.0 irc36 "QUIT"
+simulate 3.0 irc37 "QUIT"
+simulate 3.0 irc38 "QUIT"
+simulate 3.0 irc39 "QUIT"
+simulate 3.0 irc40 "QUIT"
+simulate 3.0 irc41 "QUIT"
+simulate 3.0 irc42 "QUIT"
+simulate 3.0 irc43 "QUIT"
+simulate 3.0 irc44 "QUIT"
+simulate 3.0 irc45 "QUIT"
+simulate 3.0 irc46 "QUIT"
+simulate 3.0 irc47 "QUIT"
+simulate 3.0 irc48 "QUIT"
+finish 4.0
