@@ -111,10 +111,12 @@ void Link::print_sniffed_content(int direction, Datagram content) {
 	rede = " |_ Network Layer: \n |  * Source IP: " + content.get_source_ip() 
 	+ "\n |  * Destination IP: " + content.get_destination_ip() 
 	+ "\n |  * Transport layer protocol type: " + content.get_type()
+	+ "\n |  * Datagram size in bytes: " + std::to_string(content.get_full_length())
 	+ "\n |  * TTL: " + std::to_string(content.get_ttl());
 	transporte = "\n |_Transport Layer: \n |  * Source port: " 
 	+ std::to_string(content.get_source_port()) + "\n |  * Destination port: " 
-	+ std::to_string(content.get_destination_port());
+	+ std::to_string(content.get_destination_port()) + "\n |  * Segment size in bytes: "
+	+ std::to_string(content.get_segment_length());
 	aplicacao = "\n |_ Application layer: \n    * Message content: " 
 	+ content.get_message() + "\n";
 	

@@ -18,6 +18,9 @@ class Datagram {
     int get_source_port() { return segment_->get_source_port(); }
     int get_destination_port() { return segment_->get_destination_port(); }
     int get_ttl() { return ttl_; }
+    size_t get_full_length() { return ( source_ip_.size() + destination_ip_.size() 
+    							      + segment_->get_full_length() + id_.size() + sizeof(ttl_)); }
+    size_t get_segment_length() { return segment_->get_full_length(); }
     void decrement_ttl() { ttl_--; }
   private:	
 	std::string source_ip_;
