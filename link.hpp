@@ -9,14 +9,15 @@
 #include "datagram.hpp"
 
 class Link;
+using LinkPtr = std::shared_ptr<Link>;
 
 class Device : public std::enable_shared_from_this<Device> {
   public:
-  	Device(const std::string &name) : name_(name) {}
+  	Device() {}
 //  	virtual void network_tick() = 0;
   	virtual void receive_datagram(Datagram content) = 0;
   	virtual bool send_datagram(Datagram content) = 0;
-  	virtual void set_link(Link *link) = 0;
+  	virtual void set_link(LinkPtr link) = 0;
   	std::string get_name() { return name_; }
     void set_name(const std::string &name) { name_ = name; }
   private:
@@ -26,7 +27,7 @@ class Device : public std::enable_shared_from_this<Device> {
 using DevicePtr = std::shared_ptr<Device>;
 
 
-class Link {
+class Link : public std::enable_shared_from_this<Link> {
   public:
   	Link(DevicePtr deviceA, DevicePtr deviceB, int speed, int latency) 
   	: deviceA_(deviceA), deviceB_(deviceB), speed_(speed), latency_(latency), is_sniffed_(false)
@@ -40,9 +41,9 @@ class Link {
   	void network_tick();
   	void print_sniffed_content(int direction, Datagram content);
 
-  private:	
 	DevicePtr deviceA_;
 	DevicePtr deviceB_;
+  private:	
 	int speed_;
 	int latency_;
 	bool is_sniffed_;

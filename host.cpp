@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-Host::Host(const std::string &name) : Device(name), virtual_time_(0) {
+Host::Host(const std::string &name) : virtual_time_(0) {
+	set_name(name);
 }
 
 
@@ -135,6 +136,8 @@ void Host::receive_datagram(Datagram content) {
 }
 
 bool Host::send_datagram(Datagram content) {
+	std::cout << "Getname do host: " << get_name() << std::endl;
+	std::cout << "getname dentro do link: " << link_->deviceA_->get_name() << std::endl;
 	return link_->send_datagram(get_name(), content);
 }
 

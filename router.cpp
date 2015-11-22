@@ -18,10 +18,10 @@ void Interface::print_test(int number) {
 
 Router::Router(const std::string &name, int number_of_interfaces)
 	: name_(name), number_of_interfaces_(number_of_interfaces),
-      interfaces_(number_of_interfaces_, Interface("0.0.0.0", name)), 
+      interfaces_(number_of_interfaces_, Interface("0.0.0.0")), 
       virtual_time_(0), interface_to_be_processed_(0), processment_stage_(-1) {
       	for (unsigned int i = 0; i < interfaces_.size(); i++) {
-      		std::string nome = interfaces_[i].get_name();
+      		std::string nome = name;
       		nome += "." + std::to_string(i);
       		interfaces_[i].set_name(nome);
       	}

@@ -8,7 +8,7 @@
 #include "parser.hpp"
 
 int main (int argc, char **argv) {
-    std::vector<Link> links;
+    std::vector<LinkPtr> links;
     std::unordered_map<std::string, Host> hosts;
     std::unordered_map<std::string, Router> routers;
     int finish_time;
@@ -27,15 +27,15 @@ int main (int argc, char **argv) {
     	{
     		router.second.network_tick();
     	}
-    	for (Link& link : links)
+    	for (auto link : links)
     	{
-    		link.network_tick();
+    		link->network_tick();
     	}
     }
 
 
-    for (auto& z: links) {
-        z.stop_sniffing();
+    for (auto z: links) {
+        z->stop_sniffing();
     }
 
     for (auto& h: hosts) {
