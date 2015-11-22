@@ -21,16 +21,16 @@ int main (int argc, char **argv) {
     {
     	for (auto& host : hosts)
     	{
-    		host.second.new_tick();
+    		host.second.network_tick();
     	}
-    	/*for (auto& router : routers)
+    	for (auto& router : routers)
     	{
-    		router.second.new_tick();
+    		router.second.network_tick();
     	}
     	for (Link& link : links)
     	{
-    		link.new_tick();
-    	}*/
+    		link.network_tick();
+    	}
     }
 
 

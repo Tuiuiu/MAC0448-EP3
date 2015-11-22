@@ -28,8 +28,37 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
         }
         else if (std::regex_search(str, result, std::regex("^set duplex-link ([\\w\\.]+)\\s+([\\w\\.]+)\\s+(\\d+)Mbps\\s+(\\d+)ms$")))
         {
-        	std::cout << "Duplex-link: " << result[1] << " " << result[2] << " " << result[3] << " " << result[4] << std::endl;
-            Link link(result[1], result[2], stoi(result[3]), stoi(result[4]));
+            DevicePtr deviceA;
+            DevicePtr deviceB;
+            std::string firstmember = result[1];
+            std::string secondmember = result[2];
+            int speed = stoi(result[3]);
+            int latency = stoi(result[4]);
+
+            std::unordered_map<std::string, Host>::iterator got_host = hosts.find(firstmember);
+            std::unordered_map<std::string, Router>::iterator got_router;
+            if (got_host == hosts.end()) {
+                std::regex_search(firstmember, result, std::regex("^([\\w\\d]+).(\\d+)$"));
+                got_router = routers.find(result[1]);
+                deviceA = DevicePtr(got_router->second.get_interface(stoi(result[2])));
+            } else {
+                deviceA = DevicePtr(&got_host->second);
+            }
+
+            got_host = hosts.find(secondmember);
+            if (got_host == hosts.end()) {
+                std::regex_search(secondmember, result, std::regex("^([\\w\\d]+).(\\d+)$"));
+                got_router = routers.find(result[1]);
+                deviceB = DevicePtr(got_router->second.get_interface(stoi(result[2])));
+            } else {
+                deviceB = DevicePtr(&got_host->second);
+            }
+
+        	std::cout << "Duplex-link: " << firstmember << " " << secondmember << " " << speed << " " << latency << std::endl;
+
+            Link link(deviceA, deviceB, speed, latency);
+            deviceA->set_link(&link);
+            deviceB->set_link(&link);
         	links.push_back(link);
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)$")))
@@ -166,13 +195,13 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
 
     std::cout << "================= HOSTS =================" << std::endl;
     for (auto& x: hosts) {
-        std::cout << x.first << ": " << x.second.get_name() << std::endl;
+        // std::cout << x.first << ": " << x.second.get_name() << std::endl;
         x.second.print_test();
     }
 
     std::cout << "================= ROUTERS =================" << std::endl;
     for (auto& y: routers) {
-        std::cout << y.first << ": " << y.second.get_name() << std::endl;
+        // std::cout << y.first << ": " << y.second.get_name() << std::endl;
         y.second.print_test();
     }
 
