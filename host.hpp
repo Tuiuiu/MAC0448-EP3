@@ -29,7 +29,7 @@ class Host : public Device {
     void print_datagrams();
     void receive_datagram(Datagram content) override;
     bool send_datagram(Datagram content) override;
-    void set_link(Link *link) override { link_ = link; }
+    void set_link(LinkPtr link) override { link_ = link; }
 
     std::queue<Datagram> send_datagram_queue; // deixar privado e usar friend class
     std::queue<Datagram> received_datagram_queue; // deixar privado e usar friend class
@@ -49,7 +49,7 @@ class Host : public Device {
     Application* application_;
 
   	int virtual_time_;
-    Link *link_;
+    LinkPtr link_;
 
   	//std::vector<Link> links;
 };

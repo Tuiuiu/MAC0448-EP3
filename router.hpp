@@ -12,14 +12,14 @@ class Router;
 
 class Interface : public Device {
   public:
-  	Interface(const std::string &ip, const std::string &name) : Device(name), ip_(ip), interface_capacity_(0) {}
+  	Interface(const std::string &ip) : ip_(ip), interface_capacity_(0) {}
   	void set_ip(const std::string &ip);
     void set_capacity(int capacity);
     void print_test(int number);
     // void network_tick() override;
     void receive_datagram(Datagram content) override;
     bool send_datagram(Datagram content) override;
-    void set_link(Link *link) override { link_ = link; }
+    void set_link(LinkPtr link) override { link_ = link; }
     unsigned int get_interface_capacity() { return interface_capacity_; }
     Interface* get_pointer();
 
@@ -32,7 +32,7 @@ class Interface : public Device {
     unsigned int interface_capacity_;
     Router *interface_router;
 
-    Link *link_;
+    LinkPtr link_;
 };
 
 class Router {

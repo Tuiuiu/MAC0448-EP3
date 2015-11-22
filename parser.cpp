@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <regex>
 #include <vector>
+#include <memory>
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
@@ -8,7 +9,7 @@
 
 #include "parser.hpp"
 
-void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, std::unordered_map<std::string, Router>& routers, std::vector<Link>& links, int& finish_time)
+void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, std::unordered_map<std::string, Router>& routers, std::vector<LinkPtr>& links, int& finish_time)
 {
     std::string str;
     std::ifstream file(file_name);
@@ -56,9 +57,9 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
 
         	std::cout << "Duplex-link: " << firstmember << " " << secondmember << " " << speed << " " << latency << std::endl;
 
-            Link link(deviceA, deviceB, speed, latency);
-            deviceA->set_link(&link);
-            deviceB->set_link(&link);
+            LinkPtr link = std::make_shared<Link> (deviceA, deviceB, speed, latency);
+            deviceA->set_link(link);
+            deviceB->set_link(link);
         	links.push_back(link);
         }
         else if (std::regex_search(str, result, std::regex("^set ip (\\w+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)\\s+([\\d\\.]+)$")))
@@ -165,10 +166,10 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
 
             std::string deviceA = result[1], deviceB = result[2], file_name = result[3];
 
-            for (Link& link : links)
-                if (link.links(deviceA, deviceB))
+            for (auto link : links)
+                if (link->links(deviceA, deviceB))
                 {
-                    link.start_sniffing(file_name);
+                    link->start_sniffing(file_name);
                     break;
                 }
         }
@@ -217,7 +218,7 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
     }
 
     std::cout << "================= LINKS =================" << std::endl;
-    for (auto& z: links) {
-        z.print_test();
+    for (auto z: links) {
+        z->print_test();
     }
 }
