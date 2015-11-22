@@ -1,7 +1,8 @@
 #include "host.hpp"
+
 #include <iostream>
 
-Host::Host(const std::string &name) : name_(name), virtual_time_(0) {
+Host::Host(const std::string &name) : Device(name), virtual_time_(0) {
 }
 
 
@@ -32,10 +33,6 @@ void Host::set_service_data(const std::string &type, const std::string &name) {
 		std::cout << "Tipo de serviço não existente!" << std::endl;
 }
 
-std::string Host::get_name() {
-	return name_;
-}
-
 void Host::add_command(int command_time, std::string command)
 {
 	commands_.emplace(command_time, command);
@@ -47,7 +44,7 @@ bool Host::is_application(std::string app_name)
 }
 
 
-void Host::new_tick()
+void Host::network_tick()
 {
 	while (!commands_.empty() && commands_.front().get_time() == virtual_time_)
 	{
@@ -55,10 +52,30 @@ void Host::new_tick()
 		commands_.pop();
 		std::string cmd_string = command.get_command();
 
+		// ================== NESSE MOMENTO ==================
+		// PROCESSAR O COMANDO ATRAVÉS DA APLICAÇÃO. A APLICAÇÃO
+		// SERÁ RESPONSÁVEL POR COLOCAR NA FILA OS DATAGRAMAS A SEREM
+		// ENVIADOS.
 		if (service_type_ == IRCC)
 			application.process_command(cmd_string, *this);
 	}
-	virtual_time_++;
+
+	if (!send_datagram_queue.empty())
+		if (send_datagram(send_datagram_queue.front()))
+			send_datagram_queue.pop();
+
+	if (!received_datagram_queue.empty()) {
+		// Recolhe os datagramas da fila de datagramas recebidos (provavelmente
+		// vai ser só 1 por vez, mas né) e manipula ele do jeito que precisa.
+		// Provavelmente o melhor a se fazer é algo como, enviar para a
+		// aplicação, que daí ela processa esse datagrama e depois converte isso
+		// em novos datagramas pra serem enviados.
+
+		// application.receive_datagram(received_datagram_queue.front());
+		// received_datagram_queue.pop();
+	}
+
+	virtual_time_ += 1;
 }
 
 void Host::print_test() {
@@ -77,10 +94,19 @@ void Host::print_test() {
 }
 
 void Host::print_datagrams()
-{
-	std::cout << "Datagramas do host " << name_ << std::endl;
-	for (auto& datagram : datagram_queue)
-	{
-		datagram.print_test();
+{	
+	std::queue<Datagram> aux = send_datagram_queue;
+	std::cout << "Datagramas do host " << get_name() << std::endl;
+	while (!aux.empty()) {
+		std::cout << "    |____ Content: " << aux.front().get_content() << std::endl;
+		aux.pop();
 	}
+}
+
+void Host::receive_datagram(Datagram content) {
+	received_datagram_queue.push(content);
+}
+
+bool Host::send_datagram(Datagram content) {
+	return link_->send_datagram(get_name(), content);
 }
