@@ -38,6 +38,7 @@ bool Link::send_datagram(std::string src_name, Datagram content) {
 	std::cout << "DEVICEA: " << deviceA_->get_name() << std::endl;
 	std::cout << "DEVICEB: " << deviceB_->get_name() << std::endl;
 	std::cout << "mensagem: " << content.get_message() << std::endl;
+	std::cout << "destination ip: " << content.get_destination_ip() << std::endl;
 	if(src_name == deviceA_->get_name()) {
 		if(processment_a_to_b_ == -1) {
 			processment_a_to_b_ = 1000; // Aqui tem que fazer algo do tipo: Calcular o tempo

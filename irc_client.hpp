@@ -12,8 +12,8 @@ class Host;
 class IRC_Client : public Application {
   public:
     IRC_Client() {}
-  	void process_command(std::string command, Host & host);
-  	void receive_datagram(Datagram datagram, Host & host);
+  	void process_command(std::string command, Host & host) override;
+  	void receive_datagram(Datagram datagram, Host & host) override;
   private:	
 };
 

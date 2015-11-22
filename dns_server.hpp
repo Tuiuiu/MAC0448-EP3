@@ -14,8 +14,8 @@ class Host;
 class DNS_Server : public Application {
   public:
     DNS_Server() {}
-  	void process_command(std::string command, Host & host) {};
-  	void receive_datagram(Datagram datagram, Host & host);
+  	void process_command(std::string command, Host & host) override {};
+  	void receive_datagram(Datagram datagram, Host & host) override;
   	void add_dns(std::string hostname, std::string ip);
   	void print_dns();
   private:

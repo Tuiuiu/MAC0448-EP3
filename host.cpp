@@ -76,9 +76,8 @@ void Host::network_tick()
 		// Provavelmente o melhor a se fazer é algo como, enviar para a
 		// aplicação, que daí ela processa esse datagrama e depois converte isso
 		// em novos datagramas pra serem enviados.
-
-		// application.receive_datagram(received_datagram_queue.front());
-		// received_datagram_queue.pop();
+		application_->receive_datagram(received_datagram_queue.front(), *this);
+		received_datagram_queue.pop();
 	}
 
 	virtual_time_ += 1;

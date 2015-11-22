@@ -70,20 +70,15 @@ Interface* Router::get_interface(int number) {
 
 
 void Router::network_tick() {
-	//if (virtual_time_ % 1000 == 0)
-	//printf("Roteador: virtual time %d\n", virtual_time_);
-
-
 	bool got_datagram = false;
 	unsigned int interfaces_visited = 0;
 
-	//printf ("Oi1\n");
 	for (unsigned int i = 0; i < interfaces_.size(); i++) {
 		if (!interfaces_[i].send_datagram_queue.empty())
 			if (interfaces_[i].send_datagram(interfaces_[i].send_datagram_queue.front()))
 				interfaces_[i].send_datagram_queue.pop();
 	}
-	//printf ("Oi2\n");
+
 	if (processment_stage_ != -1) processment_stage_ -= 1; // Mais um tick processando algum pacote
 	if (processment_stage_ == -1) {
 		while (!got_datagram && interfaces_visited < interfaces_.size()) {
@@ -97,7 +92,7 @@ void Router::network_tick() {
 			}
 		}
 	}
-	//printf ("Oi3\n");
+
 	if (processment_stage_ == 0) {
 		Datagram datagram_to_be_sent = interfaces_[interface_to_be_processed_].received_datagram_queue.front();
 		interfaces_[interface_to_be_processed_].received_datagram_queue.pop();
@@ -132,8 +127,6 @@ void Router::network_tick() {
 	}
 
 	virtual_time_ += 1;
-
-	//printf("Roteador: virtual time %d\n", virtual_time_);
 }
 
 void Interface::receive_datagram(Datagram content) {
