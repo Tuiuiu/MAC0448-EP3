@@ -78,6 +78,8 @@ void IRC_Client::receive_datagram(Datagram datagram, Host & host)
 			connected_server_ip = datagram.get_source_ip();
 			connected_server_port = datagram.get_source_port();
 		}
-		printf("Datagrama desconhecido no %s\n", host.get_name().c_str());
+		else if (!std::regex_search(irc_response, result, std::regex("^:([\\w\\d]+) USER .+$"))
+			&& !std::regex_search(irc_response, result, std::regex("^:([\\w\\d]+) QUIT$")))
+			printf("Datagrama desconhecido no %s\n", host.get_name().c_str());
 	}
 }
