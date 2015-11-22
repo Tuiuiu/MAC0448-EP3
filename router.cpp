@@ -98,6 +98,7 @@ void Router::network_tick() {
 		interfaces_[interface_to_be_processed_].received_datagram_queue.pop();
 
 		std::string destination = datagram_to_be_sent.get_destination_ip();
+		//printf("destination = %s\n", destination.c_str());
 		std::string interface;
 
 		std::size_t found = destination.find_last_of('.');
@@ -105,16 +106,20 @@ void Router::network_tick() {
 		destination += "0";
 		// Pega o destination, substitui os ultimos numeros por 0
 		interface = routes_[destination];
+		//printf("destination = %s\n", destination.c_str());
+		//printf("interface = %s\n", interface.c_str());
 		while (is_ip(interface)) {
 			found = interface.find_last_of('.');
 			interface = interface.substr(0, found+1);
 			interface += "0";
 
 			interface = routes_[interface];
+			//printf("interface = %s\n", interface.c_str());
 			// Pega interface, substitui os ultimos numeros por 0
 			// interface = routes_[interface]; 
 		}
 
+		//printf("interface = %s\n", interface.c_str());
 		int interface_index = stoi(interface);
 		if (interfaces_[interface_index].received_datagram_queue.size() 
 		    + interfaces_[interface_index].send_datagram_queue.size() 

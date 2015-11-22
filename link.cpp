@@ -76,7 +76,7 @@ bool Link::send_datagram(std::string src_name, Datagram content) {
 	} 
 	else {
 		std::cout << "Deu ruim cara... sério... Na hora de mandar coisas no Link" << std::endl;
-		printf("src_name = %s, deviceA_->get_name() = %s, deviceB_->get_name() = %s\n", src_name.c_str(), deviceA_->get_name().c_str(), deviceB_->get_name().c_str());
+		//printf("src_name = %s, deviceA_->get_name() = %s, deviceB_->get_name() = %s\n", src_name.c_str(), deviceA_->get_name().c_str(), deviceB_->get_name().c_str());
 		return false;
 	}
 }
