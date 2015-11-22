@@ -97,6 +97,7 @@ void Router::network_tick() {
 		Datagram datagram_to_be_sent = interfaces_[interface_to_be_processed_].received_datagram_queue.front();
 		interfaces_[interface_to_be_processed_].received_datagram_queue.pop();
 
+		datagram_to_be_sent.decrement_ttl();
 		std::string destination = datagram_to_be_sent.get_destination_ip();
 		std::string interface;
 

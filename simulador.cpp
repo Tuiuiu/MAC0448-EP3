@@ -34,7 +34,6 @@ int main (int argc, char **argv) {
         	}
         }
 
-
         for (auto z: links) {
             z->stop_sniffing();
         }
@@ -43,6 +42,5 @@ int main (int argc, char **argv) {
             h.second.print_datagrams();
         }
     }
-
     return 0;
 }
