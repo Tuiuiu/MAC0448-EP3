@@ -30,8 +30,8 @@ class Host : public Device {
     void receive_datagram(Datagram content) override;
     bool send_datagram(Datagram content) override;
     void set_link(LinkPtr link) override { link_ = link; }
+    void add_to_send_datagram_queue(Datagram datagram);
 
-    std::queue<Datagram> send_datagram_queue; // deixar privado e usar friend class
     std::queue<Datagram> received_datagram_queue; // deixar privado e usar friend class
     void add_dns(std::string host, std::string ip);
     void print_dns();
@@ -40,6 +40,7 @@ class Host : public Device {
     std::string dns_server_ip_;
       
   private:
+    std::queue<Datagram> send_datagram_queue;
     // std::string name_;
     std::string gateway_ip_;
     Service service_type_;
