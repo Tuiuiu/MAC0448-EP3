@@ -10,14 +10,17 @@ int connected_server_port = -1;
 void IRC_Client::process_command(std::string command, Host & host)
 {
 	std::smatch result;
+	std::string datagram_id = host.get_name();
     if (std::regex_search(command, result, std::regex("^CONNECT ([\\w\\d]+)\\s+(\\d+)$")))
     { // precisa de DNS
+    	datagram_id += "." + host.get_count_and_add();
     	std::string content = std::string(result[1]) + " A IN";
-    	host.add_to_send_datagram_queue(Datagram(host.ip_, host.dns_server_ip_, new UDP_Segment(DNS_CLIENT_PORT, DNS_SERVER_PORT, content)));
+    	host.add_to_send_datagram_queue(Datagram(host.ip_, host.dns_server_ip_, new UDP_Segment(DNS_CLIENT_PORT, DNS_SERVER_PORT, content), datagram_id));
     	commands_waiting_for_dns.push_back(command);
     }
     else if (std::regex_search(command, result, std::regex("^CONNECT ([\\d\\.]+)\\s+(\\d+)$")))
     { // não precisa de DNS
+    	datagram_id += "." + host.get_count_and_add();
     	std::string content = "CONNECT";
     	std::string destination_ip = result[1];
     	//printf("result[2] = %s\n", result[2].c_str());
@@ -25,18 +28,19 @@ void IRC_Client::process_command(std::string command, Host & host)
     	std::string source_ip = host.ip_;
     	int source_port = IRC_CLIENT_PORT;
 
-    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content)));
+    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content), datagram_id));
     }
     else if (std::regex_search(command, result, std::regex("^USER ([\\w\\d]+)$"))
     	|| std::regex_search(command, result, std::regex("^QUIT$")))
     {
     	if (!connected_server_ip.empty() && connected_server_port != -1)
     	{
+    		datagram_id += "." + host.get_count_and_add();
 	    	std::string source_ip = host.ip_;
 	    	int source_port = IRC_CLIENT_PORT;
 	    	std::string destination_ip = connected_server_ip;
 	    	int destination_port = connected_server_port;
-	    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command)));
+	    	host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, command), datagram_id));
 	    }
 	    else
 	    	printf("Cliente IRC não conectado a nenhum servidor\n");

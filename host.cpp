@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Host::Host(const std::string &name) : virtual_time_(0) {
+Host::Host(const std::string &name) : virtual_time_(0), datagram_count(0) {
 	set_name(name);
 }
 
@@ -53,7 +53,6 @@ bool Host::is_application(std::string app_name)
 
 void Host::network_tick()
 {
-	//printf("Host: virtual time %d\n", virtual_time_);
 
 	while (!commands_.empty() && commands_.front().get_time() == virtual_time_)
 	{
@@ -61,10 +60,6 @@ void Host::network_tick()
 		commands_.pop();
 		std::string cmd_string = command.get_command();
 
-		// ================== NESSE MOMENTO ==================
-		// PROCESSAR O COMANDO ATRAVÉS DA APLICAÇÃO. A APLICAÇÃO
-		// SERÁ RESPONSÁVEL POR COLOCAR NA FILA OS DATAGRAMAS A SEREM
-		// ENVIADOS.
 		if (service_type_ == IRCC)
 			application_->process_command(cmd_string, *this);
 	}
@@ -84,8 +79,6 @@ void Host::network_tick()
 	}
 
 	virtual_time_ += 1;
-
-	//printf("Host: virtual time %d\n", virtual_time_);
 }
 
 

@@ -15,7 +15,6 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
     std::ifstream file(file_name);
     while (std::getline(file, str))
     {
-        //std::regex rgx_set_host("^set host (\\w+)$");
         std::smatch result;
         if (std::regex_search(str, result, std::regex("^set host (\\w+)$")))
         {
@@ -153,8 +152,6 @@ void parse(std::string file_name, std::unordered_map<std::string, Host>& hosts, 
                 for (auto host : hosts)
                     dns_server->add_dns(host.first, host.second.ip_);
                 dns_server->print_dns();
-
-                //dns_server->application_->receive_datagram(Datagram("10.0.0.1", "192.168.1.1", "h1 A IN"), *dns_server);
             }
         }
         else if (std::regex_search(str, result, std::regex("^set sniffer ([\\w\\.]+)\\s+([\\w\\.]+)\\s+\"(.*)\"$")))

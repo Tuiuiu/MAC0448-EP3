@@ -14,12 +14,10 @@ void Link::start_sniffing(std::string file_name)
 	sniff_output_ = new std::ofstream;
 	sniff_output_->open (file_name);
 	(*sniff_output_) << "Sniffing interfaces " << deviceA_->get_name() << " to " << deviceB_->get_name() << ".\n";
-	//printf ("link %s para %s: is_sniffed_? %d\n", deviceA_.c_str(), deviceB_.c_str(), is_sniffed_);
 }
 
 void Link::stop_sniffing()
 {
-	//printf ("link %s para %s: is_sniffed_? %d\n", deviceA_.c_str(), deviceB_.c_str(), is_sniffed_);
 	if (is_sniffed_)
 		sniff_output_->close();
 	is_sniffed_ = false;
@@ -76,7 +74,6 @@ bool Link::send_datagram(std::string src_name, Datagram content) {
 	} 
 	else {
 		std::cout << "Deu ruim cara... sério... Na hora de mandar coisas no Link" << std::endl;
-		//printf("src_name = %s, deviceA_->get_name() = %s, deviceB_->get_name() = %s\n", src_name.c_str(), deviceA_->get_name().c_str(), deviceB_->get_name().c_str());
 		return false;
 	}
 }
@@ -105,16 +102,36 @@ void Link::network_tick() {
 }
 
 void Link::print_sniffed_content(int direction, Datagram content) {
-	if (direction == 0) { // do A para o B
+	std::string cabecalho;
+	std::string rede;
+	std::string transporte;
+	std::string aplicacao;
+	// if (direction == 0) { // do A para o B
+	
+	cabecalho = "ID: " + content.get_id() + " Time: " + std::to_string(virtual_time_) 
+	+ " Sniffer entre " + deviceA_->get_name() + " e " + deviceB_->get_name() + "\n";
+	rede = "Camada de Rede: \n|__ IP Origem: " + content.get_source_ip() 
+	+ "\n|__ IP Destino: " + content.get_destination_ip() 
+	+ "\n|__ Tipo de protocolo de transporte: " + content.get_type();
+	transporte = "Camada de Transporte: \n|__ Porta da fonte: " + 
+	std::to_string(content.get_source_port()) + "\n|__ Porta do destino: " +
+	std::to_string(content.get_destination_port());
+	aplicacao = "Camada de Aplicação: \n|__ Conteudo da mensagem: " + content.get_message() + "\n";
+
+	std::cout << cabecalho << rede << transporte << aplicacao << std::endl;
+	(*sniff_output_) << cabecalho << rede << transporte << aplicacao << ".\n";
+
+
+
 		// Formatar uma string
 		// Enviar para o arquivo
 		// Enviar para a saída padrão
-	}
-	else if (direction == 1) { // do B para o A
+	//}
+	//else if (direction == 1) { // do B para o A
 		// Formatar uma string
 		// Enviar para o arquivo
 		// Enviar para a saída padrão 
-	}
-	else { // Sério, não sei como faz pra entrar aqui
-	}
+	//}
+	//else { // Sério, não sei como faz pra entrar aqui
+	//}
 }

@@ -36,24 +36,24 @@ class Host : public Device {
     std::queue<Datagram> received_datagram_queue; // deixar privado e usar friend class
     void add_dns(std::string host, std::string ip);
     void print_dns();
+    int get_count_and_add() { int tmp = datagram_count; datagram_count++; return tmp; }
 
     std::string ip_;
     std::string dns_server_ip_;
       
   private:
     std::queue<Datagram> send_datagram_queue;
-    // std::string name_;
     std::string gateway_ip_;
     Service service_type_;
     std::string service_name_;
     std::queue<Command> commands_;
 
-    Application* application_;
-
   	int virtual_time_;
+    int datagram_count;
+
+    Application* application_;
     LinkPtr link_;
 
-  	//std::vector<Link> links;
 };
 
 

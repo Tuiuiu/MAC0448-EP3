@@ -20,12 +20,13 @@ void DNS_Server::receive_datagram(Datagram datagram, Host & host)
 		else // Encontrou
 		{
 			//printf("Encontrou\n");
+			std::string datagram_id = hostname + "." + std::to_string(host.get_count_and_add());
 			std::string source_ip = host.ip_;
 			int source_port = DNS_SERVER_PORT;
 			std::string destination_ip = datagram.get_source_ip();
 			int destination_port = datagram.get_source_port();
 			std::string content = hostname + " A IN " + dns_mappings_.at(hostname);
-			host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content)));
+			host.add_to_send_datagram_queue(Datagram(source_ip, destination_ip, new UDP_Segment(source_port, destination_port, content), datagram_id));
 		}
     }
 }

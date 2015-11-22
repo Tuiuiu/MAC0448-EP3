@@ -16,7 +16,6 @@ class Interface : public Device {
   	void set_ip(const std::string &ip);
     void set_capacity(int capacity);
     void print_test(int number);
-    // void network_tick() override;
     void receive_datagram(Datagram content) override;
     bool send_datagram(Datagram content) override;
     void set_link(LinkPtr link) override { link_ = link; }
@@ -27,7 +26,6 @@ class Interface : public Device {
     std::queue<Datagram> send_datagram_queue;    // deixar friend pro router
     std::queue<Datagram> received_datagram_queue; // deixar friend pro router
   private:
-    // std::string name_
     std::string ip_;
     unsigned int interface_capacity_;
     Router *interface_router;
@@ -60,7 +58,6 @@ class Router {
 	std::unordered_map<std::string, std::string> routes_;
     int processment_stage_;
 
-  	// std::vector<Link> links;
 };
 
 #endif // _ROUTER_HPP
