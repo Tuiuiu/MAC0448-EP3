@@ -8,6 +8,8 @@
 #include "command.hpp"
 #include "datagram.hpp"
 #include "irc_client.hpp"
+#include "dns_server.hpp"
+#include "application.hpp"
 
 enum Service { IRCC, IRCS, DNSS };
 
@@ -31,6 +33,9 @@ class Host : public Device {
 
     std::queue<Datagram> send_datagram_queue; // deixar privado e usar friend class
     std::queue<Datagram> received_datagram_queue; // deixar privado e usar friend class
+    void add_dns(std::string host, std::string ip);
+    void print_dns();
+
     std::string ip_;
     std::string dns_server_ip_;
       
@@ -41,7 +46,7 @@ class Host : public Device {
     std::string service_name_;
     std::queue<Command> commands_;
 
-    IRC_Client application;
+    Application* application_;
 
   	int virtual_time_;
     Link *link_;

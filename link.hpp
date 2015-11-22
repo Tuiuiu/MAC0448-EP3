@@ -30,8 +30,8 @@ class Link {
   public:
   	Link(DevicePtr deviceA, DevicePtr deviceB, int speed, int latency) 
   	: deviceA_(deviceA), deviceB_(deviceB), speed_(speed), latency_(latency), is_sniffed_(false)
-  	, processment_a_to_b_(-1), processment_b_to_a_(-1), virtual_time_(0), content_a_to_b_("","","") 
-  	, content_b_to_a_("","","") {}
+  	, processment_a_to_b_(-1), processment_b_to_a_(-1), virtual_time_(0), content_a_to_b_("","", nullptr) 
+  	, content_b_to_a_("","", nullptr) {}
   	void print_test();
   	void start_sniffing(std::string file_name);
   	void stop_sniffing();
