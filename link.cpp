@@ -36,9 +36,9 @@ bool Link::links(std::string A, std::string B)
 bool Link::send_datagram(std::string src_name, Datagram content) {
 	if(src_name == deviceA_->get_name()) {
 		if(processment_a_to_b_ == -1) {
-			processment_a_to_b_ = 1000; // Aqui tem que fazer algo do tipo: Calcular o tempo
-										// que leva pra enviar o pacote na velocidade do cabo,
-										// somando o delay
+			processment_a_to_b_ = ((content.get_full_length()*8)/(speed_)); // get_full_length retorna em bytes
+																			// esse length * 8 = tamanho em bits
+																			// para o speed, 10Mbps = 10b/us
 			content_a_to_b_ = content;
 			if (is_sniffed_) {
 				print_sniffed_content(0, content);
@@ -53,9 +53,9 @@ bool Link::send_datagram(std::string src_name, Datagram content) {
 		}
 	} else if(src_name == deviceB_->get_name()) {
 		if(processment_b_to_a_ == -1) {
-			processment_b_to_a_ = 1000; // Aqui tem que fazer algo do tipo: Calcular o tempo
-										// que leva pra enviar o pacote na velocidade do cabo,
-										// somando o delay
+			processment_b_to_a_ = ((content.get_full_length()*8)/(speed_)); // get_full_length retorna em bytes
+																			// esse length * 8 = tamanho em bits
+																			// para o speed, 10Mbps = 10b/us
 			content_b_to_a_ = content;
 			if (is_sniffed_) {
 				print_sniffed_content(1, content);
